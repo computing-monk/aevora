@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aevora — Discover the world’s greatest brands</title>
+  <meta name="description" content="A visually immersive, editorial-style destination for discovering the world's greatest brands, products, and services." />
+  <meta property="og:title" content="Aevora" />
+  <meta property="og:description" content="Discover the world's greatest brands through immersive editorial curation." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0e676b" />
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=boska@400,500,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+      --text-hero: clamp(3rem, 0.5rem + 7vw, 7rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-surface-offset: #f1efea;
+      --color-surface-dynamic: #e8e4dc;
+      --color-divider: #ddd8cf;
+      --color-border: #d3cec4;
+
+      --color-text: #1e1d19;
+      --color-text-muted: #6f6b63;
+      --color-text-faint: #a7a39b;
+      --color-text-inverse: #f8f6f2;
+
+      --color-primary: #0e676b;
+      --color-primary-hover: #0b5155;
+      --color-primary-active: #08383b;
+      --color-primary-highlight: #d0e0dd;
+
+      --color-blue: #245ca6;
+      --color-gold: #b78710;
+      --color-orange: #b86118;
+      --color-success: #3d7428;
+
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.875rem;
+      --radius-xl: 1.25rem;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 2px rgba(20,20,20,0.06);
+      --shadow-md: 0 10px 28px rgba(20,20,20,0.09);
+      --shadow-lg: 0 24px 60px rgba(20,20,20,0.14);
+
+      --font-display: 'Boska', Georgia, serif;
+      --font-body: 'Satoshi', Inter, sans-serif;
+
+      --content-narrow: 700px;
+      --content-default: 1080px;
+      --content-wide: 1320px;
+
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #151412;
+      --color-surface: #1b1a18;
+      --color-surface-2: #201f1c;
+      --color-surface-offset: #24221f;
+      --color-surface-dynamic: #2a2824;
+      --color-divider: #2f2c29;
+      --color-border: #3a3733;
+
+      --color-text: #ede7dd;
+      --color-text-muted: #b2aa9d;
+      --color-text-faint: #7f786d;
+      --color-text-inverse: #1d1c19;
+
+      --color-primary: #58a1a7;
+      --color-primary-hover: #70b4b9;
+      --color-primary-active: #418389;
+      --color-primary-highlight: #2b393a;
+
+      --color-blue: #78a0dc;
+      --color-gold: #d1a53a;
+      --color-orange: #d58848;
+      --color-success: #7cb25e;
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.25);
+      --shadow-md: 0 10px 28px rgba(0,0,0,0.35);
+      --shadow-lg: 0 24px 60px rgba(0,0,0,0.45);
+    }
+
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -webkit-text-size-adjust: none;
+      text-size-adjust: none;
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg { display: block; max-width: 100%; height: auto; }
+    button, input, select { font: inherit; color: inherit; }
+    button { border: none; background: none; cursor: pointer; }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-interactive),
+                  background var(--transition-interactive),
+                  border-color var(--transition-interactive),
+                  box-shadow var(--transition-interactive),
+                  transform var(--transition-interactive);
+    }
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      z-index: 100;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .container {
+      width: min(100% - 2rem, var(--content-default));
+      margin-inline: auto;
+    }
+
+    .container-wide {
+      width: min(100% - 2rem, var(--content-wide));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in oklab, var(--color-bg) 86%, transparent);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+
+    .header-inner {
+      width: min(100% - 2rem, var(--content-wide));
+      margin-inline: auto;
+      min-height: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      min-height: 44px;
+    }
+
+    .logo-mark {
+      width: 2rem;
+      height: 2rem;
+      color: var(--color-primary);
+    }
+
+    .brand-name {
+      font-size: var(--text-sm);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .desktop-nav {
+      display: none;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .desktop-nav a {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .desktop-nav a:hover,
+    .desktop-nav a:focus-visible {
+      color: var(--color-text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .theme-toggle,
+    .menu-toggle {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-full);
+      background: var(--color-surface);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+
+    .btn {
+      min-height: 44px;
+      padding: 0.85rem 1.1rem;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: background var(--transition-interactive),
+                  color var(--transition-interactive),
+                  box-shadow var(--transition-interactive),
+                  transform var(--transition-interactive),
+                  border-color var(--transition-interactive);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary {
+      background: var(--color-surface);
+      border-color: color-mix(in oklab, var(--color-text) 12%, transparent);
+      color: var(--color-text);
+    }
+    .btn-ghost {
+      color: var(--color-text);
+      border-color: color-mix(in oklab, var(--color-text) 12%, transparent);
+    }
+
+    .mobile-panel {
+      display: none;
+      border-top: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      padding: 0 1rem 1rem;
+      background: var(--color-bg);
+    }
+    .mobile-panel.open { display: block; }
+
+    .mobile-nav {
+      display: grid;
+      gap: 0.4rem;
+      padding-top: 0.8rem;
+    }
+
+    .mobile-nav a {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      color: var(--color-text-muted);
+      border-bottom: 1px solid color-mix(in oklab, var(--color-text) 6%, transparent);
+    }
+
+    .hero {
+      position: relative;
+      overflow: clip;
+      padding-block: clamp(4rem, 10vw, 8rem) clamp(3rem, 6vw, 5rem);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 32%),
+        radial-gradient(circle at 85% 25%, color-mix(in oklab, var(--color-gold) 10%, transparent), transparent 28%),
+        linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--color-surface) 65%, transparent) 100%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      width: min(100% - 2rem, var(--content-wide));
+      margin-inline: auto;
+      display: grid;
+      gap: var(--space-8);
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: color-mix(in oklab, var(--color-primary) 8%, var(--color-surface));
+      color: var(--color-text);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+      margin-top: var(--space-4);
+    }
+
+    .hero-copy {
+      max-width: 64ch;
+      color: var(--color-text-muted);
+      margin-top: var(--space-5);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: var(--space-6);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: var(--space-8);
+    }
+
+    .metric {
+      padding-top: 1rem;
+      border-top: 1px solid color-mix(in oklab, var(--color-text) 12%, transparent);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: var(--text-lg);
+      line-height: 1.1;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-stage {
+      position: relative;
+      min-height: 26rem;
+      border-radius: 2rem;
+      overflow: hidden;
+      background:
+        linear-gradient(160deg, color-mix(in oklab, var(--color-primary) 10%, var(--color-surface)) 0%, var(--color-surface-offset) 100%);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stage-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(color-mix(in oklab, var(--color-text) 6%, transparent) 1px, transparent 1px),
+        linear-gradient(90deg, color-mix(in oklab, var(--color-text) 6%, transparent) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent);
+      opacity: 0.65;
+    }
+
+    .orbit-card {
+      position: absolute;
+      background: color-mix(in oklab, var(--color-surface-2) 86%, transparent);
+      backdrop-filter: blur(16px);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      border-radius: var(--radius-xl);
+      padding: 1rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .orbit-card h3 {
+      font-size: var(--text-sm);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .orbit-card p {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      max-width: 28ch;
+    }
+
+    .orbit-card small {
+      display: block;
+      margin-top: 0.75rem;
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+    }
+
+    .orbit-card.a { top: 8%; left: 7%; width: min(18rem, 75%); }
+    .orbit-card.b { right: 7%; top: 18%; width: min(16rem, 70%); }
+    .orbit-card.c { left: 14%; bottom: 9%; width: min(15rem, 68%); }
+    .orbit-card.d { right: 10%; bottom: 10%; width: min(18rem, 72%); }
+
+    .hero-ring {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: min(54vw, 28rem);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid color-mix(in oklab, var(--color-primary) 35%, transparent);
+      box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-text) 4%, transparent);
+    }
+
+    .hero-ring::before,
+    .hero-ring::after {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      border: 1px dashed color-mix(in oklab, var(--color-primary) 22%, transparent);
+    }
+
+    .hero-ring::after {
+      inset: 27%;
+      border-style: solid;
+      border-color: color-mix(in oklab, var(--color-gold) 26%, transparent);
+    }
+
+    .floating-pill {
+      position: absolute;
+      padding: 0.55rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: var(--color-bg);
+      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pill-1 { top: 18%; left: 50%; transform: translateX(-50%); }
+    .pill-2 { top: 49%; right: 15%; }
+    .pill-3 { bottom: 18%; left: 50%; transform: translateX(-50%); }
+    .pill-4 { top: 49%; left: 14%; }
+
+    section {
+      padding-block: clamp(var(--space-12), 7vw, var(--space-24));
+    }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .section-head p {
+      color: var(--color-text-muted);
+      max-width: 60ch;
+    }
+
+    .category-bento,
+    .story-grid,
+    .brand-grid,
+    .product-grid,
+    .revenue-grid,
+    .growth-grid,
+    .newsletter-grid,
+    .editorial-split,
+    .footer-top {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .category-card,
+    .story-card,
+    .brand-card,
+    .product-card,
+    .monetization-card,
+    .growth-card {
+      position: relative;
+      background: var(--color-surface);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .category-card > a,
+    .story-card > a,
+    .brand-card > a,
+    .product-card > a {
+      display: block;
+      padding: 1.15rem;
+      height: 100%;
+    }
+
+    .card-tag {
+      display: inline-flex;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: color-mix(in oklab, var(--color-primary) 8%, var(--color-surface-2));
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .category-card h3,
+    .story-card h3,
+    .brand-card h3,
+    .product-card h3,
+    .monetization-card h3,
+    .growth-card h3 {
+      margin-top: 0.9rem;
+      font-size: var(--text-lg);
+      line-height: 1.1;
+    }
+
+    .category-card p,
+    .story-card p,
+    .brand-card p,
+    .product-card p,
+    .monetization-card p,
+    .growth-card p {
+      color: var(--color-text-muted);
+      margin-top: 0.75rem;
+      max-width: 45ch;
+    }
+
+    .category-visual {
+      margin-top: 1rem;
+      min-height: 10rem;
+      border-radius: calc(var(--radius-xl) - 0.5rem);
+      background:
+        linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 14%, var(--color-surface)) 0%, transparent 100%),
+        linear-gradient(180deg, var(--color-surface-offset), var(--color-surface-2));
+      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .visual-lines,
+    .visual-dots {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .visual-lines {
+      background-image:
+        linear-gradient(90deg, color-mix(in oklab, var(--color-text) 7%, transparent) 1px, transparent 1px),
+        linear-gradient(color-mix(in oklab, var(--color-text) 7%, transparent) 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity: 0.7;
+    }
+
+    .visual-dots::before,
+    .visual-dots::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: color-mix(in oklab, var(--color-primary) 24%, transparent);
+      filter: blur(2px);
+    }
+
+    .visual-dots::before {
+      width: 7rem;
+      height: 7rem;
+      right: -1rem;
+      top: -1rem;
+    }
+
+    .visual-dots::after {
+      width: 5rem;
+      height: 5rem;
+      left: 12%;
+      bottom: 12%;
+      background: color-mix(in oklab, var(--color-gold) 18%, transparent);
+    }
+
+    .brand-marquee {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 1rem;
+    }
+
+    .brand-chip {
+      min-height: 3rem;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-radius: var(--radius-full);
+      background: var(--color-surface-offset);
+      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    .story-card.featured {
+      background:
+        linear-gradient(140deg, color-mix(in oklab, var(--color-primary) 10%, var(--color-surface)) 0%, var(--color-surface) 100%);
+    }
+
+    .story-card .meta-row,
+    .brand-card .meta-row,
+    .product-card .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-index {
+      background: var(--color-surface-2);
+    }
+
+    .brand-card .brand-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-offset));
+      color: var(--color-text);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .score {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .score-row {
+      display: grid;
+      grid-template-columns: 6rem 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .score-bar {
+      height: 0.45rem;
+      border-radius: var(--radius-full);
+      background: color-mix(in oklab, var(--color-text) 8%, transparent);
+      overflow: hidden;
+    }
+
+    .score-bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--color-primary);
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-media {
+      aspect-ratio: 16 / 10;
+      background:
+        radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--color-primary) 12%, transparent), transparent 28%),
+        linear-gradient(180deg, var(--color-surface-offset), var(--color-surface));
+      border-bottom: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .media-object {
+      position: absolute;
+      inset: auto 10% 10% auto;
+      width: 55%;
+      height: 58%;
+      border-radius: 1.5rem;
+      background: color-mix(in oklab, var(--color-bg) 92%, transparent);
+      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+      box-shadow: var(--shadow-md);
+    }
+
+    .media-object::before,
+    .media-object::after {
+      content: "";
+      position: absolute;
+      border-radius: 1rem;
+      background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-offset));
+      border: 1px solid color-mix(in oklab, var(--color-text) 6%, transparent);
+    }
+
+    .media-object::before {
+      inset: -18% 55% 52% -12%;
+    }
+
+    .media-object::after {
+      inset: 56% -10% -14% 38%;
+      background: color-mix(in oklab, var(--color-gold) 10%, var(--color-surface-offset));
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+    }
+
+    .manifesto {
+      padding: clamp(1.25rem, 4vw, 2rem);
+      background: var(--color-text);
+      color: var(--color-text-inverse);
+      border-radius: 1.75rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .manifesto h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 8ch;
+    }
+
+    .manifesto p {
+      margin-top: 1rem;
+      color: color-mix(in oklab, var(--color-text-inverse) 78%, transparent);
+      max-width: 54ch;
+    }
+
+    .manifesto-list {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1.4rem;
+      list-style: none;
+    }
+
+    .manifesto-list li {
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      color: color-mix(in oklab, var(--color-text-inverse) 84%, transparent);
+    }
+
+    .timeline-panel {
+      background: var(--color-surface);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      border-radius: 1.75rem;
+      padding: clamp(1.25rem, 4vw, 2rem);
+    }
+
+    .timeline-panel h3 {
+      font-size: var(--text-xl);
+      line-height: 1.1;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-item {
+      padding-left: 1rem;
+      border-left: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+
+    .timeline-item span {
+      display: inline-block;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-faint);
+      margin-bottom: 0.35rem;
+    }
+
+    .newsletter {
+      background:
+        linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 10%, var(--color-surface)) 0%, var(--color-surface) 100%);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      border-radius: 2rem;
+      padding: clamp(1.5rem, 5vw, 3rem);
+      box-shadow: var(--shadow-md);
+    }
+
+    .newsletter h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .newsletter p {
+      color: var(--color-text-muted);
+      max-width: 56ch;
+      margin-top: 0.8rem;
+    }
+
+    .newsletter-form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .field label {
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select {
+      min-height: 3.25rem;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid color-mix(in oklab, var(--color-text) 12%, transparent);
+      background: var(--color-bg);
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 0.9rem;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-lg);
+      background: color-mix(in oklab, var(--color-success) 14%, var(--color-surface));
+      color: var(--color-text);
+      border: 1px solid color-mix(in oklab, var(--color-success) 28%, transparent);
+      font-size: var(--text-sm);
+    }
+
+    .success-message.show { display: block; }
+
+    .monetization-card,
+    .growth-card {
+      padding: 1.15rem;
+      background: var(--color-surface);
+    }
+
+    .growth-card ul,
+    .monetization-card ul {
+      margin-top: 0.9rem;
+      display: grid;
+      gap: 0.65rem;
+      color: var(--color-text-muted);
+      padding-left: 1.1rem;
+    }
+
+    .site-footer {
+      padding-block: var(--space-12);
+      border-top: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+
+    .footer-grid {
+      width: min(100% - 2rem, var(--content-wide));
+      margin-inline: auto;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.5rem;
+      color: var(--color-text-muted);
+    }
+
+    .footer-brand p {
+      color: var(--color-text-muted);
+      max-width: 52ch;
+      margin-top: 0.8rem;
+    }
+
+    .footer-bottom {
+      padding-top: 1rem;
+      border-top: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    @media (min-width: 720px) {
+      .newsletter-form {
+        grid-template-columns: 1.2fr 0.9fr;
+      }
+      .newsletter-form .field:first-child { grid-column: 1 / 2; }
+      .newsletter-form .field:nth-child(2) { grid-column: 2 / 3; }
+      .newsletter-form .form-actions,
+      .newsletter-form .success-message { grid-column: 1 / -1; }
+      .story-grid,
+      .brand-grid,
+      .product-grid,
+      .revenue-grid,
+      .growth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-top { grid-template-columns: 2fr 1fr; }
+    }
+
+    @media (min-width: 960px) {
+      .desktop-nav { display: flex; }
+      .menu-toggle { display: none; }
+      .hero-grid { grid-template-columns: 1.05fr 0.95fr; }
+      .category-bento { grid-template-columns: 1.2fr 0.8fr 0.8fr; }
+      .category-card.large { grid-row: span 2; }
+      .story-grid { grid-template-columns: 1.2fr 0.8fr 0.8fr; }
+      .story-card.featured { grid-row: span 2; }
+      .brand-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .editorial-split { grid-template-columns: 1.1fr 0.9fr; }
+      .newsletter-grid { grid-template-columns: 0.95fr 1.05fr; }
+      .revenue-grid,
+      .growth-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-lockup" href="#top" aria-label="Aevora home">
+        <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="2"></circle>
+          <path d="M15 27.5C18.2 20.8 23.1 17.5 32 16.8" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"></path>
+          <path d="M16.2 18.5L24.5 31.2L33.2 18.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span class="brand-name">Aevora</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary">
+        <a href="#why">Why now</a>
+        <a href="#categories">Universes</a>
+        <a href="#brands">Brands</a>
+        <a href="#products">Products</a>
+        <a href="#revenue">Revenue</a>
+        <a href="#growth">Growth</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a class="btn btn-primary" href="#newsletter">Join early access</a>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel" data-menu-toggle>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M4 7H20M4 12H20M4 17H20"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-panel" id="mobile-panel">
+      <nav class="mobile-nav" aria-label="Mobile">
+        <a href="#why">Why now</a>
+        <a href="#categories">Universes</a>
+        <a href="#brands">Brands</a>
+        <a href="#products">Products</a>
+        <a href="#revenue">Revenue</a>
+        <a href="#growth">Growth</a>
+        <a href="#newsletter">Newsletter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">A new category of product discovery</div>
+          <h1>Not a store. Not a blog. A universe of brands.</h1>
+          <p class="hero-copy">
+            Aevora is a cinematic, editorial destination that organizes the world’s greatest brands into immersive universes — where people discover exceptional products, trusted services, design stories, and what makes each company iconic.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#brands">Explore brand universes</a>
+            <a class="btn btn-secondary" href="#why">See the model</a>
+          </div>
+          <div class="hero-meta" aria-label="Site metrics preview">
+            <div class="metric">
+              <strong>100+</strong>
+              <span>Global brands</span>
+            </div>
+            <div class="metric">
+              <strong>12</strong>
+              <span>Curated sectors</span>
+            </div>
+            <div class="metric">
+              <strong>1</strong>
+              <span>Beautiful discovery layer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stage" aria-hidden="true">
+          <div class="stage-grid"></div>
+          <div class="hero-ring"></div>
+          <div class="floating-pill pill-1">Tech</div>
+          <div class="floating-pill pill-2">Luxury</div>
+          <div class="floating-pill pill-3">Mobility</div>
+          <div class="floating-pill pill-4">Home</div>
+
+          <div class="orbit-card a">
+            <h3>Brand universe</h3>
+            <p>Every brand gets a destination page — story, signature products, service ecosystem, design language, and best buys.</p>
+            <small>Editorial + commerce + trust</small>
+          </div>
+
+          <div class="orbit-card b">
+            <h3>Product intelligence</h3>
+            <p>Curated picks, scorecards, comparison layers, and outbound affiliate intent — without looking like a coupon site.</p>
+            <small>Monetize beautifully</small>
+          </div>
+
+          <div class="orbit-card c">
+            <h3>Visual discovery</h3>
+            <p>Users browse by category, aspiration, use case, lifestyle, price tier, and brand mythology.</p>
+            <small>Magnetic navigation</small>
+          </div>
+
+          <div class="orbit-card d">
+            <h3>Global taste</h3>
+            <p>From Apple to Rolex to Dyson to LEGO — one platform where iconic brands feel connected, not listed.</p>
+            <small>What nobody is doing well</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container editorial-split">
+        <div class="manifesto">
+          <h2>Discovery should feel like reading the future.</h2>
+          <p>
+            Most sites are either catalogs, affiliate blogs, or media publications. Aevora sits between them and turns brands into immersive editorial worlds that are discoverable, monetizable, and memorable.
+          </p>
+          <ul class="manifesto-list">
+            <li>Brand-first navigation instead of endless product pages.</li>
+            <li>Magazine-quality layouts instead of generic three-card grids.</li>
+            <li>Curated trust instead of algorithmic clutter.</li>
+            <li>Affiliate monetization hidden inside premium discovery.</li>
+          </ul>
+        </div>
+
+        <aside class="timeline-panel" aria-labelledby="build-path-title">
+          <h3 id="build-path-title">How this becomes a business</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span>Stage 01</span>
+              <p>Launch with 20 iconic brands across tech, home, fashion, and mobility.</p>
+            </div>
+            <div class="timeline-item">
+              <span>Stage 02</span>
+              <p>Publish brand universe pages with affiliate-ready product curation and newsletter capture.</p>
+            </div>
+            <div class="timeline-item">
+              <span>Stage 03</span>
+              <p>Rank for high-intent discovery searches and distribute through short-form video and social content.</p>
+            </div>
+            <div class="timeline-item">
+              <span>Stage 04</span>
+              <p>Add sponsored placements, premium lists, and brand partnerships once traffic compounds.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="categories">
+      <div class="container-wide">
+        <div class="section-head">
+          <div class="eyebrow">Brand universes</div>
+          <h2>Explore greatness by category, not by clutter.</h2>
+          <p>
+            Each universe is designed as an editorial world of its own — with visual mood, top brands, hero products, and intelligent pathways into comparison and purchase.
+          </p>
+        </div>
+
+        <div class="category-bento">
+          <article class="category-card large">
+            <a href="#brands">
+              <span class="card-tag">Technology</span>
+              <h3>Devices, software, audio, gaming, and connected living</h3>
+              <p>
+                Explore the ecosystems of Apple, Samsung, Sony, Dyson, Bose, Microsoft, LEGO, and the brands shaping modern digital life.
+              </p>
+              <div class="category-visual" aria-hidden="true">
+                <div class="visual-lines"></div>
+                <div class="visual-dots"></div>
+                <div class="brand-marquee">
+                  <div class="brand-chip">Apple</div>
+                  <div class="brand-chip">Sony</div>
+                  <div class="brand-chip">Dyson</div>
+                  <div class="brand-chip">Samsung</div>
+                  <div class="brand-chip">LEGO</div>
+                  <div class="brand-chip">Bose</div>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="category-card">
+            <a href="#brands">
+              <span class="card-tag">Luxury</span>
+              <h3>Craft, heritage, status, and timeless product design</h3>
+              <p>Watches, leather, hospitality, couture, and the companies that define aspiration.</p>
+              <div class="category-visual" aria-hidden="true">
+                <div class="visual-lines"></div>
+                <div class="visual-dots"></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="category-card">
+            <a href="#brands">
+              <span class="card-tag">Mobility</span>
+              <h3>Cars, EVs, travel systems, and performance icons</h3>
+              <p>Where engineering, motion, design language, and prestige intersect.</p>
+              <div class="category-visual" aria-hidden="true">
+                <div class="visual-lines"></div>
+                <div class="visual-dots"></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="category-card">
+            <a href="#brands">
+              <span class="card-tag">Home</span>
+              <h3>Kitchen, living, wellness, and beautifully built essentials</h3>
+              <p>From coffee machines to furniture systems and premium lifestyle tools.</p>
+              <div class="category-visual" aria-hidden="true">
+                <div class="visual-lines"></div>
+                <div class="visual-dots"></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="category-card">
+            <a href="#brands">
+              <span class="card-tag">Fashion</span>
+              <h3>From athletic performance to design-led global labels</h3>
+              <p>Brands with identity, community, and a product story worth following.</p>
+              <div class="category-visual" aria-hidden="true">
+                <div class="visual-lines"></div>
+                <div class="visual-dots"></div>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container-wide">
+        <div class="section-head">
+          <div class="eyebrow">Editorial format</div>
+          <h2>The site behaves like a modern magazine, not a product dump.</h2>
+          <p>
+            Content is structured into visual stories, featured drops, seasonal edits, and curated pathways that move users from inspiration to action.
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card featured">
+            <a href="#">
+              <span class="card-tag">Cover story</span>
+              <h3>Why Apple’s ecosystem still sets the standard for product gravity</h3>
+              <p>
+                A flagship long-form page that mixes ecosystem storytelling, top picks, service layers, pricing ladders, and where each product fits in a user’s life.
+              </p>
+              <div class="meta-row">
+                <span>Universe page</span>
+                <span>8 min read</span>
+                <span>Shop layer ready</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="story-card">
+            <a href="#">
+              <span class="card-tag">Seasonal edit</span>
+              <h3>12 brands redefining the premium workspace</h3>
+              <p>Chairs, lamps, monitors, notebooks, coffee systems, and focus-first tools.</p>
+              <div class="meta-row">
+                <span>Curated list</span>
+                <span>High intent</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="story-card">
+            <a href="#">
+              <span class="card-tag">Comparison</span>
+              <h3>Dyson vs. Shark vs. Miele — the premium cleaning map</h3>
+              <p>Use cases, durability, service, price bands, and the right buyer match.</p>
+              <div class="meta-row">
+                <span>Affiliate ready</span>
+                <span>Conversion page</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="story-card">
+            <a href="#">
+              <span class="card-tag">Service layer</span>
+              <h3>The best global hotel brands for design-conscious travelers</h3>
+              <p>Brand storytelling does not need to stop at physical products.</p>
+              <div class="meta-row">
+                <span>Hotels</span>
+                <span>Partnership-ready</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="story-card">
+            <a href="#">
+              <span class="card-tag">Gift edit</span>
+              <h3>The objects that make a house feel intentionally designed</h3>
+              <p>Small luxury, high-conversion baskets, and easy newsletter-driven commerce.</p>
+              <div class="meta-row">
+                <span>Holiday angle</span>
+                <span>Social friendly</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="brand-index" id="brands">
+      <div class="container-wide">
+        <div class="section-head">
+          <div class="eyebrow">Brand index</div>
+          <h2>Every brand gets a scorecard, a story, and a reason to exist here.</h2>
+          <p>
+            The point is not to list brands. The point is to explain why each brand matters, what it is best at, and which products deserve attention first.
+          </p>
+        </div>
+
+        <div class="brand-grid">
+          <article class="brand-card">
+            <a href="#">
+              <div class="brand-top">
+                <div>
+                  <span class="card-tag">Technology</span>
+                  <h3>Apple</h3>
+                </div>
+                <div class="brand-badge">A</div>
+              </div>
+              <p>Ecosystem strength, industrial design, retail trust, and premium customer lock-in.</p>
+              <div class="score">
+                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:96%"></span></div><strong>96</strong></div>
+                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:94%"></span></div><strong>94</strong></div>
+                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:98%"></span></div><strong>98</strong></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="brand-card">
+            <a href="#">
+              <div class="brand-top">
+                <div>
+                  <span class="card-tag">Home technology</span>
+                  <h3>Dyson</h3>
+                </div>
+                <div class="brand-badge">D</div>
+              </div>
+              <p>Engineering theater, premium household performance, and a strong visual product identity.</p>
+              <div class="score">
+                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:92%"></span></div><strong>92</strong></div>
+                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:90%"></span></div><strong>90</strong></div>
+                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:89%"></span></div><strong>89</strong></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="brand-card">
+            <a href="#">
+              <div class="brand-top">
+                <div>
+                  <span class="card-tag">Audio</span>
+                  <h3>Sony</h3>
+                </div>
+                <div class="brand-badge">S</div>
+              </div>
+              <p>Deep category breadth across entertainment, sound, imaging, and everyday premium electronics.</p>
+              <div class="score">
+                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:88%"></span></div><strong>88</strong></div>
+                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:93%"></span></div><strong>93</strong></div>
+                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:86%"></span></div><strong>86</strong></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="brand-card">
+            <a href="#">
+              <div class="brand-top">
+                <div>
+                  <span class="card-tag">Mobility</span>
+                  <h3>Tesla</h3>
+                </div>
+                <div class="brand-badge">T</div>
+              </div>
+              <p>Software-led car ownership, bold industrial minimalism, and a polarizing but powerful brand story.</p>
+              <div class="score">
+                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:89%"></span></div><strong>89</strong></div>
+                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:84%"></span></div><strong>84</strong></div>
+                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:93%"></span></div><strong>93</strong></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="brand-card">
+            <a href="#">
+              <div class="brand-top">
+                <div>
+                  <span class="card-tag">Sport</span>
+                  <h3>Nike</h3>
+                </div>
+                <div class="brand-badge">N</div>
+              </div>
+              <p>Product innovation married to culture, storytelling, community, and global symbolic power.</p>
+              <div class="score">
+                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:90%"></span></div><strong>90</strong></div>
+                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:87%"></span></div><strong>87</strong></div>
+                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:95%"></span></div><strong>95</strong></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="brand-card">
+            <a href="#">
+              <div class="brand-top">
+                <div>
+                  <span class="card-tag">Luxury</span>
+                  <h3>Rolex</h3>
+                </div>
+                <div class="brand-badge">R</div>
+              </div>
+              <p>Precision, symbolism, resale mythology, and unmatched brand recognizability in watches.</p>
+              <div class="score">
+                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:94%"></span></div><strong>94</strong></div>
+                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:79%"></span></div><strong>79</strong></div>
+                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:99%"></span></div><strong>99</strong></div>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container-wide">
+        <div class="section-head">
+          <div class="eyebrow">Shoppable layer</div>
+          <h2>Product cards are curated recommendations, not commodity listings.</h2>
+          <p>
+            Each card can point to your affiliate partner, brand store, or marketplace listing. The visual system keeps commerce elegant instead of noisy.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-media" aria-hidden="true">
+              <div class="media-object"></div>
+            </div>
+            <div style="padding:1.15rem">
+              <span class="card-tag">Apple universe</span>
+              <h3>MacBook Air</h3>
+              <p>The gateway device for modern knowledge work, portability, and premium everyday computing.</p>
+              <div class="price-row">
+                <span class="price">From premium tier</span>
+                <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">View product</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media" aria-hidden="true">
+              <div class="media-object"></div>
+            </div>
+            <div style="padding:1.15rem">
+              <span class="card-tag">Dyson universe</span>
+              <h3>Airwrap</h3>
+              <p>A classic example of engineering spectacle turned into social-proof-driven beauty commerce.</p>
+              <div class="price-row">
+                <span class="price">High aspiration</span>
+                <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">View product</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media" aria-hidden="true">
+              <div class="media-object"></div>
+            </div>
+            <div style="padding:1.15rem">
+              <span class="card-tag">Sony universe</span>
+              <h3>WH-1000XM series</h3>
+              <p>One of the easiest high-intent audio recommendation pages you can build for conversion.</p>
+              <div class="price-row">
+                <span class="price">Best seller zone</span>
+                <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">View product</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="revenue">
+      <div class="container-wide">
+        <div class="section-head">
+          <div class="eyebrow">Revenue design</div>
+          <h2>Monetization is built into the experience from day one.</h2>
+          <p>
+            You do not need to wait for massive scale. The site can earn through layered monetization even with focused niche traffic.
+          </p>
+        </div>
+
+        <div class="revenue-grid">
+          <article class="monetization-card">
+            <span class="card-tag">01 · Affiliate</span>
+            <h3>Product and marketplace commissions</h3>
+            <p>Link curated items to Amazon, brand programs, CJ, ShareASale, Rakuten, or direct merchant landing pages.</p>
+            <ul>
+              <li>Best for product roundups and brand universe pages.</li>
+              <li>Works especially well for tech, home, beauty, and lifestyle.</li>
+              <li>High-intent pages can monetize with relatively low traffic.</li>
+            </ul>
+          </article>
+
+          <article class="monetization-card">
+            <span class="card-tag">02 · Sponsorship</span>
+            <h3>Featured brand edits and paid placement</h3>
+            <p>Once the visual quality and audience trust are established, brands can pay to appear in themed edits.</p>
+            <ul>
+              <li>“Brand of the month” homepage slot.</li>
+              <li>Seasonal campaigns and launch showcases.</li>
+              <li>Newsletter sponsorship inventory.</li>
+            </ul>
+          </article>
+
+          <article class="monetization-card">
+            <span class="card-tag">03 · Premium</span>
+            <h3>Members-only lists and private curation</h3>
+            <p>Charge for access to premium buying guides, founder picks, investment-style brand reports, or concierge recommendations.</p>
+            <ul>
+              <li>Collectors’ edits, luxury watch lists, workspace kits.</li>
+              <li>Private community or email membership layer.</li>
+              <li>Strong fit for design-conscious audiences.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="growth">
+      <div class="container-wide">
+        <div class="section-head">
+          <div class="eyebrow">Traffic system</div>
+          <h2>Growth comes from search, social, and repeatable visual content.</h2>
+          <p>
+            Your advantage is that this idea is naturally content-native. One universe page can become articles, reels, carousels, email, and comparison pages.
+          </p>
+        </div>
+
+        <div class="growth-grid">
+          <article class="growth-card">
+            <span class="card-tag">SEO engine</span>
+            <h3>Build search intent into every universe page</h3>
+            <ul>
+              <li>Best Apple products for work, travel, creators, gifting.</li>
+              <li>Nike vs. Adidas brand ecosystems.</li>
+              <li>Luxury hotel brands ranked by design and service.</li>
+            </ul>
+          </article>
+
+          <article class="growth-card">
+            <span class="card-tag">Social system</span>
+            <h3>Turn each page into short-form content</h3>
+            <ul>
+              <li>Top 5 brands in premium audio.</li>
+              <li>Why Dyson sells aspiration, not just appliances.</li>
+              <li>The best objects money can buy for your desk.</li>
+            </ul>
+          </article>
+
+          <article class="growth-card">
+            <span class="card-tag">Retention loop</span>
+            <h3>Newsletter converts casual discovery into repeat traffic</h3>
+            <ul>
+              <li>Weekly new brand universes.</li>
+              <li>Monthly best-in-category edits.</li>
+              <li>Limited-run themed curation drops.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="container">
+        <div class="newsletter">
+          <div class="newsletter-grid">
+            <div>
+              <div class="eyebrow">Early audience capture</div>
+              <h2>Join the first readers of Aevora.</h2>
+              <p>
+                Collect subscribers before the full library is live. Offer a weekly curation email with exceptional brands, products, and the stories behind them.
+              </p>
+            </div>
+
+            <div>
+              <form class="newsletter-form" id="newsletter-form">
+                <div class="field">
+                  <label for="email">Email address</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                </div>
+
+                <div class="field">
+                  <label for="interest">Primary interest</label>
+                  <select id="interest" name="interest">
+                    <option value="technology">Technology</option>
+                    <option value="luxury">Luxury</option>
+                    <option value="home">Home</option>
+                    <option value="mobility">Mobility</option>
+                    <option value="fashion">Fashion</option>
+                  </select>
+                </div>
+
+                <div class="form-actions">
+                  <button class="btn btn-primary" type="submit">Join the newsletter</button>
+                </div>
+
+                <div class="success-message" id="success-message" role="status" aria-live="polite">
+                  You’re on the list. In production, connect this form to Formspree, Beehiiv, ConvertKit, or Mailchimp.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand-lockup" href="#top" aria-label="Aevora home">
+            <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M15 27.5C18.2 20.8 23.1 17.5 32 16.8" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"></path>
+              <path d="M16.2 18.5L24.5 31.2L33.2 18.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span class="brand-name">Aevora</span>
+          </a>
+          <p>
+            A visual discovery platform for the world’s greatest brands, products, and services — designed to turn taste into trust, and trust into revenue.
+          </p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer">
+          <a href="#why">Why now</a>
+          <a href="#categories">Universes</a>
+          <a href="#brands">Brands</a>
+          <a href="#products">Products</a>
+          <a href="#newsletter">Newsletter</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Aevora</span>
+        <span>Static launch concept · deploy free on Netlify, Vercel, or Cloudflare Pages</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const themeToggle = document.querySelector('[data-theme-toggle]');
+      const menuToggle = document.querySelector('[data-menu-toggle]');
+      const mobilePanel = document.getElementById('mobile-panel');
+      const form = document.getElementById('newsletter-form');
+      const success = document.getElementById('success-message');
+
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      function renderThemeIcon(currentTheme) {
+        if (!themeToggle) return;
+        themeToggle.setAttribute(
+          'aria-label',
+          currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+        );
+        themeToggle.innerHTML = currentTheme === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"></path></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"></path></svg>';
+      }
+
+      renderThemeIcon(theme);
+
+      if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', theme);
+          renderThemeIcon(theme);
+        });
+      }
+
+      if (menuToggle && mobilePanel) {
+        menuToggle.addEventListener('click', function () {
+          const isOpen = mobilePanel.classList.toggle('open');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        mobilePanel.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            mobilePanel.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      if (form && success) {
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          success.classList.add('show');
+          form.reset();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
