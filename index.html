@@ -1,1733 +1,618 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aevora — Discover the world’s greatest brands</title>
-  <meta name="description" content="A visually immersive, editorial-style destination for discovering the world's greatest brands, products, and services." />
-  <meta property="og:title" content="Aevora" />
-  <meta property="og:description" content="Discover the world's greatest brands through immersive editorial curation." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0e676b" />
-
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=boska@400,500,700&display=swap" rel="stylesheet">
-
-  <style>
-    :root, [data-theme="light"] {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
-      --text-hero: clamp(3rem, 0.5rem + 7vw, 7rem);
-
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-5: 1.25rem;
-      --space-6: 1.5rem;
-      --space-8: 2rem;
-      --space-10: 2.5rem;
-      --space-12: 3rem;
-      --space-16: 4rem;
-      --space-20: 5rem;
-      --space-24: 6rem;
-      --space-32: 8rem;
-
-      --color-bg: #f7f6f2;
-      --color-surface: #f9f8f5;
-      --color-surface-2: #fbfbf9;
-      --color-surface-offset: #f1efea;
-      --color-surface-dynamic: #e8e4dc;
-      --color-divider: #ddd8cf;
-      --color-border: #d3cec4;
-
-      --color-text: #1e1d19;
-      --color-text-muted: #6f6b63;
-      --color-text-faint: #a7a39b;
-      --color-text-inverse: #f8f6f2;
-
-      --color-primary: #0e676b;
-      --color-primary-hover: #0b5155;
-      --color-primary-active: #08383b;
-      --color-primary-highlight: #d0e0dd;
-
-      --color-blue: #245ca6;
-      --color-gold: #b78710;
-      --color-orange: #b86118;
-      --color-success: #3d7428;
-
-      --radius-sm: 0.375rem;
-      --radius-md: 0.5rem;
-      --radius-lg: 0.875rem;
-      --radius-xl: 1.25rem;
-      --radius-full: 9999px;
-
-      --shadow-sm: 0 1px 2px rgba(20,20,20,0.06);
-      --shadow-md: 0 10px 28px rgba(20,20,20,0.09);
-      --shadow-lg: 0 24px 60px rgba(20,20,20,0.14);
-
-      --font-display: 'Boska', Georgia, serif;
-      --font-body: 'Satoshi', Inter, sans-serif;
-
-      --content-narrow: 700px;
-      --content-default: 1080px;
-      --content-wide: 1320px;
-
-      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    [data-theme="dark"] {
-      --color-bg: #151412;
-      --color-surface: #1b1a18;
-      --color-surface-2: #201f1c;
-      --color-surface-offset: #24221f;
-      --color-surface-dynamic: #2a2824;
-      --color-divider: #2f2c29;
-      --color-border: #3a3733;
-
-      --color-text: #ede7dd;
-      --color-text-muted: #b2aa9d;
-      --color-text-faint: #7f786d;
-      --color-text-inverse: #1d1c19;
-
-      --color-primary: #58a1a7;
-      --color-primary-hover: #70b4b9;
-      --color-primary-active: #418389;
-      --color-primary-highlight: #2b393a;
-
-      --color-blue: #78a0dc;
-      --color-gold: #d1a53a;
-      --color-orange: #d58848;
-      --color-success: #7cb25e;
-
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.25);
-      --shadow-md: 0 10px 28px rgba(0,0,0,0.35);
-      --shadow-lg: 0 24px 60px rgba(0,0,0,0.45);
-    }
-
-    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html {
-      -webkit-text-size-adjust: none;
-      text-size-adjust: none;
-      scroll-behavior: smooth;
-      scroll-padding-top: 6rem;
-    }
-    body {
-      min-height: 100vh;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.6;
-      color: var(--color-text);
-      background: var(--color-bg);
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-    img, svg { display: block; max-width: 100%; height: auto; }
-    button, input, select { font: inherit; color: inherit; }
-    button { border: none; background: none; cursor: pointer; }
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color var(--transition-interactive),
-                  background var(--transition-interactive),
-                  border-color var(--transition-interactive),
-                  box-shadow var(--transition-interactive),
-                  transform var(--transition-interactive);
-    }
-    :focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 3px;
-      border-radius: var(--radius-sm);
-    }
-
-    .skip-link {
-      position: absolute;
-      left: 1rem;
-      top: -3rem;
-      background: var(--color-primary);
-      color: var(--color-text-inverse);
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-md);
-      z-index: 100;
-    }
-    .skip-link:focus { top: 1rem; }
-
-    .container {
-      width: min(100% - 2rem, var(--content-default));
-      margin-inline: auto;
-    }
-
-    .container-wide {
-      width: min(100% - 2rem, var(--content-wide));
-      margin-inline: auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: color-mix(in oklab, var(--color-bg) 86%, transparent);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-    }
-
-    .header-inner {
-      width: min(100% - 2rem, var(--content-wide));
-      margin-inline: auto;
-      min-height: 4.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
-    }
-
-    .brand-lockup {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      min-height: 44px;
-    }
-
-    .logo-mark {
-      width: 2rem;
-      height: 2rem;
-      color: var(--color-primary);
-    }
-
-    .brand-name {
-      font-size: var(--text-sm);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .desktop-nav {
-      display: none;
-      gap: 1.25rem;
-      align-items: center;
-    }
-
-    .desktop-nav a {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .desktop-nav a:hover,
-    .desktop-nav a:focus-visible {
-      color: var(--color-text);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .theme-toggle,
-    .menu-toggle {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: var(--radius-full);
-      background: var(--color-surface);
-      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-    }
-
-    .btn {
-      min-height: 44px;
-      padding: 0.85rem 1.1rem;
-      border-radius: var(--radius-full);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.55rem;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      border: 1px solid transparent;
-      transition: background var(--transition-interactive),
-                  color var(--transition-interactive),
-                  box-shadow var(--transition-interactive),
-                  transform var(--transition-interactive),
-                  border-color var(--transition-interactive);
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--color-primary);
-      color: var(--color-text-inverse);
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-primary:hover { background: var(--color-primary-hover); }
-    .btn-secondary {
-      background: var(--color-surface);
-      border-color: color-mix(in oklab, var(--color-text) 12%, transparent);
-      color: var(--color-text);
-    }
-    .btn-ghost {
-      color: var(--color-text);
-      border-color: color-mix(in oklab, var(--color-text) 12%, transparent);
-    }
-
-    .mobile-panel {
-      display: none;
-      border-top: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-      padding: 0 1rem 1rem;
-      background: var(--color-bg);
-    }
-    .mobile-panel.open { display: block; }
-
-    .mobile-nav {
-      display: grid;
-      gap: 0.4rem;
-      padding-top: 0.8rem;
-    }
-
-    .mobile-nav a {
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      color: var(--color-text-muted);
-      border-bottom: 1px solid color-mix(in oklab, var(--color-text) 6%, transparent);
-    }
-
-    .hero {
-      position: relative;
-      overflow: clip;
-      padding-block: clamp(4rem, 10vw, 8rem) clamp(3rem, 6vw, 5rem);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 20%, color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 32%),
-        radial-gradient(circle at 85% 25%, color-mix(in oklab, var(--color-gold) 10%, transparent), transparent 28%),
-        linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--color-surface) 65%, transparent) 100%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      width: min(100% - 2rem, var(--content-wide));
-      margin-inline: auto;
-      display: grid;
-      gap: var(--space-8);
-      align-items: end;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: var(--radius-full);
-      background: color-mix(in oklab, var(--color-primary) 8%, var(--color-surface));
-      color: var(--color-text);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-weight: 700;
-      width: fit-content;
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: var(--text-hero);
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-      max-width: 11ch;
-      margin-top: var(--space-4);
-    }
-
-    .hero-copy {
-      max-width: 64ch;
-      color: var(--color-text-muted);
-      margin-top: var(--space-5);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: var(--space-6);
-    }
-
-    .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.75rem;
-      margin-top: var(--space-8);
-    }
-
-    .metric {
-      padding-top: 1rem;
-      border-top: 1px solid color-mix(in oklab, var(--color-text) 12%, transparent);
-    }
-
-    .metric strong {
-      display: block;
-      font-size: var(--text-lg);
-      line-height: 1.1;
-      font-weight: 700;
-      color: var(--color-text);
-    }
-
-    .metric span {
-      display: block;
-      color: var(--color-text-muted);
-      font-size: var(--text-xs);
-      margin-top: 0.3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .hero-stage {
-      position: relative;
-      min-height: 26rem;
-      border-radius: 2rem;
-      overflow: hidden;
-      background:
-        linear-gradient(160deg, color-mix(in oklab, var(--color-primary) 10%, var(--color-surface)) 0%, var(--color-surface-offset) 100%);
-      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .stage-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(color-mix(in oklab, var(--color-text) 6%, transparent) 1px, transparent 1px),
-        linear-gradient(90deg, color-mix(in oklab, var(--color-text) 6%, transparent) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent);
-      opacity: 0.65;
-    }
-
-    .orbit-card {
-      position: absolute;
-      background: color-mix(in oklab, var(--color-surface-2) 86%, transparent);
-      backdrop-filter: blur(16px);
-      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-      border-radius: var(--radius-xl);
-      padding: 1rem;
-      box-shadow: var(--shadow-md);
-    }
-
-    .orbit-card h3 {
-      font-size: var(--text-sm);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .orbit-card p {
-      font-size: var(--text-sm);
-      color: var(--color-text);
-      max-width: 28ch;
-    }
-
-    .orbit-card small {
-      display: block;
-      margin-top: 0.75rem;
-      color: var(--color-text-muted);
-      font-size: var(--text-xs);
-    }
-
-    .orbit-card.a { top: 8%; left: 7%; width: min(18rem, 75%); }
-    .orbit-card.b { right: 7%; top: 18%; width: min(16rem, 70%); }
-    .orbit-card.c { left: 14%; bottom: 9%; width: min(15rem, 68%); }
-    .orbit-card.d { right: 10%; bottom: 10%; width: min(18rem, 72%); }
-
-    .hero-ring {
-      position: absolute;
-      inset: 50% auto auto 50%;
-      transform: translate(-50%, -50%);
-      width: min(54vw, 28rem);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 1px solid color-mix(in oklab, var(--color-primary) 35%, transparent);
-      box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-text) 4%, transparent);
-    }
-
-    .hero-ring::before,
-    .hero-ring::after {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border-radius: 50%;
-      border: 1px dashed color-mix(in oklab, var(--color-primary) 22%, transparent);
-    }
-
-    .hero-ring::after {
-      inset: 27%;
-      border-style: solid;
-      border-color: color-mix(in oklab, var(--color-gold) 26%, transparent);
-    }
-
-    .floating-pill {
-      position: absolute;
-      padding: 0.55rem 0.8rem;
-      border-radius: var(--radius-full);
-      background: var(--color-bg);
-      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
-      font-size: var(--text-xs);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-text);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .pill-1 { top: 18%; left: 50%; transform: translateX(-50%); }
-    .pill-2 { top: 49%; right: 15%; }
-    .pill-3 { bottom: 18%; left: 50%; transform: translateX(-50%); }
-    .pill-4 { top: 49%; left: 14%; }
-
-    section {
-      padding-block: clamp(var(--space-12), 7vw, var(--space-24));
-    }
-
-    .section-head {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: clamp(1.5rem, 4vw, 3rem);
-    }
-
-    .section-head h2 {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      max-width: 10ch;
-    }
-
-    .section-head p {
-      color: var(--color-text-muted);
-      max-width: 60ch;
-    }
-
-    .category-bento,
-    .story-grid,
-    .brand-grid,
-    .product-grid,
-    .revenue-grid,
-    .growth-grid,
-    .newsletter-grid,
-    .editorial-split,
-    .footer-top {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: 1fr;
-    }
-
-    .category-card,
-    .story-card,
-    .brand-card,
-    .product-card,
-    .monetization-card,
-    .growth-card {
-      position: relative;
-      background: var(--color-surface);
-      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .category-card > a,
-    .story-card > a,
-    .brand-card > a,
-    .product-card > a {
-      display: block;
-      padding: 1.15rem;
-      height: 100%;
-    }
-
-    .card-tag {
-      display: inline-flex;
-      padding: 0.35rem 0.65rem;
-      border-radius: var(--radius-full);
-      background: color-mix(in oklab, var(--color-primary) 8%, var(--color-surface-2));
-      color: var(--color-text-muted);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 700;
-    }
-
-    .category-card h3,
-    .story-card h3,
-    .brand-card h3,
-    .product-card h3,
-    .monetization-card h3,
-    .growth-card h3 {
-      margin-top: 0.9rem;
-      font-size: var(--text-lg);
-      line-height: 1.1;
-    }
-
-    .category-card p,
-    .story-card p,
-    .brand-card p,
-    .product-card p,
-    .monetization-card p,
-    .growth-card p {
-      color: var(--color-text-muted);
-      margin-top: 0.75rem;
-      max-width: 45ch;
-    }
-
-    .category-visual {
-      margin-top: 1rem;
-      min-height: 10rem;
-      border-radius: calc(var(--radius-xl) - 0.5rem);
-      background:
-        linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 14%, var(--color-surface)) 0%, transparent 100%),
-        linear-gradient(180deg, var(--color-surface-offset), var(--color-surface-2));
-      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .visual-lines,
-    .visual-dots {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .visual-lines {
-      background-image:
-        linear-gradient(90deg, color-mix(in oklab, var(--color-text) 7%, transparent) 1px, transparent 1px),
-        linear-gradient(color-mix(in oklab, var(--color-text) 7%, transparent) 1px, transparent 1px);
-      background-size: 26px 26px;
-      opacity: 0.7;
-    }
-
-    .visual-dots::before,
-    .visual-dots::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: color-mix(in oklab, var(--color-primary) 24%, transparent);
-      filter: blur(2px);
-    }
-
-    .visual-dots::before {
-      width: 7rem;
-      height: 7rem;
-      right: -1rem;
-      top: -1rem;
-    }
-
-    .visual-dots::after {
-      width: 5rem;
-      height: 5rem;
-      left: 12%;
-      bottom: 12%;
-      background: color-mix(in oklab, var(--color-gold) 18%, transparent);
-    }
-
-    .brand-marquee {
-      display: grid;
-      gap: 0.75rem;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 1rem;
-    }
-
-    .brand-chip {
-      min-height: 3rem;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      border-radius: var(--radius-full);
-      background: var(--color-surface-offset);
-      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
-      font-size: var(--text-sm);
-      font-weight: 600;
-    }
-
-    .story-card.featured {
-      background:
-        linear-gradient(140deg, color-mix(in oklab, var(--color-primary) 10%, var(--color-surface)) 0%, var(--color-surface) 100%);
-    }
-
-    .story-card .meta-row,
-    .brand-card .meta-row,
-    .product-card .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1rem;
-      color: var(--color-text-faint);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .brand-index {
-      background: var(--color-surface-2);
-    }
-
-    .brand-card .brand-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand-badge {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-offset));
-      color: var(--color-text);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      flex-shrink: 0;
-    }
-
-    .score {
-      margin-top: 1rem;
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .score-row {
-      display: grid;
-      grid-template-columns: 6rem 1fr auto;
-      gap: 0.75rem;
-      align-items: center;
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-    }
-
-    .score-bar {
-      height: 0.45rem;
-      border-radius: var(--radius-full);
-      background: color-mix(in oklab, var(--color-text) 8%, transparent);
-      overflow: hidden;
-    }
-
-    .score-bar span {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: var(--color-primary);
-    }
-
-    .product-card {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-media {
-      aspect-ratio: 16 / 10;
-      background:
-        radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--color-primary) 12%, transparent), transparent 28%),
-        linear-gradient(180deg, var(--color-surface-offset), var(--color-surface));
-      border-bottom: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .media-object {
-      position: absolute;
-      inset: auto 10% 10% auto;
-      width: 55%;
-      height: 58%;
-      border-radius: 1.5rem;
-      background: color-mix(in oklab, var(--color-bg) 92%, transparent);
-      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
-      box-shadow: var(--shadow-md);
-    }
-
-    .media-object::before,
-    .media-object::after {
-      content: "";
-      position: absolute;
-      border-radius: 1rem;
-      background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-offset));
-      border: 1px solid color-mix(in oklab, var(--color-text) 6%, transparent);
-    }
-
-    .media-object::before {
-      inset: -18% 55% 52% -12%;
-    }
-
-    .media-object::after {
-      inset: 56% -10% -14% 38%;
-      background: color-mix(in oklab, var(--color-gold) 10%, var(--color-surface-offset));
-    }
-
-    .price-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
-    }
-
-    .manifesto {
-      padding: clamp(1.25rem, 4vw, 2rem);
-      background: var(--color-text);
-      color: var(--color-text-inverse);
-      border-radius: 1.75rem;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .manifesto h2 {
-      font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      max-width: 8ch;
-    }
-
-    .manifesto p {
-      margin-top: 1rem;
-      color: color-mix(in oklab, var(--color-text-inverse) 78%, transparent);
-      max-width: 54ch;
-    }
-
-    .manifesto-list {
-      display: grid;
-      gap: 0.9rem;
-      margin-top: 1.4rem;
-      list-style: none;
-    }
-
-    .manifesto-list li {
-      padding-top: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.14);
-      color: color-mix(in oklab, var(--color-text-inverse) 84%, transparent);
-    }
-
-    .timeline-panel {
-      background: var(--color-surface);
-      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-      border-radius: 1.75rem;
-      padding: clamp(1.25rem, 4vw, 2rem);
-    }
-
-    .timeline-panel h3 {
-      font-size: var(--text-xl);
-      line-height: 1.1;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .timeline-item {
-      padding-left: 1rem;
-      border-left: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-    }
-
-    .timeline-item span {
-      display: inline-block;
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-text-faint);
-      margin-bottom: 0.35rem;
-    }
-
-    .newsletter {
-      background:
-        linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 10%, var(--color-surface)) 0%, var(--color-surface) 100%);
-      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-      border-radius: 2rem;
-      padding: clamp(1.5rem, 5vw, 3rem);
-      box-shadow: var(--shadow-md);
-    }
-
-    .newsletter h2 {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      max-width: 10ch;
-    }
-
-    .newsletter p {
-      color: var(--color-text-muted);
-      max-width: 56ch;
-      margin-top: 0.8rem;
-    }
-
-    .newsletter-form {
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .field {
-      display: grid;
-      gap: 0.45rem;
-    }
-
-    .field label {
-      font-size: var(--text-xs);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      font-weight: 700;
-    }
-
-    .field input,
-    .field select {
-      min-height: 3.25rem;
-      padding: 0.9rem 1rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid color-mix(in oklab, var(--color-text) 12%, transparent);
-      background: var(--color-bg);
-    }
-
-    .success-message {
-      display: none;
-      margin-top: 0.9rem;
-      padding: 0.9rem 1rem;
-      border-radius: var(--radius-lg);
-      background: color-mix(in oklab, var(--color-success) 14%, var(--color-surface));
-      color: var(--color-text);
-      border: 1px solid color-mix(in oklab, var(--color-success) 28%, transparent);
-      font-size: var(--text-sm);
-    }
-
-    .success-message.show { display: block; }
-
-    .monetization-card,
-    .growth-card {
-      padding: 1.15rem;
-      background: var(--color-surface);
-    }
-
-    .growth-card ul,
-    .monetization-card ul {
-      margin-top: 0.9rem;
-      display: grid;
-      gap: 0.65rem;
-      color: var(--color-text-muted);
-      padding-left: 1.1rem;
-    }
-
-    .site-footer {
-      padding-block: var(--space-12);
-      border-top: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
-    }
-
-    .footer-grid {
-      width: min(100% - 2rem, var(--content-wide));
-      margin-inline: auto;
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .footer-links {
-      display: grid;
-      gap: 0.5rem;
-      color: var(--color-text-muted);
-    }
-
-    .footer-brand p {
-      color: var(--color-text-muted);
-      max-width: 52ch;
-      margin-top: 0.8rem;
-    }
-
-    .footer-bottom {
-      padding-top: 1rem;
-      border-top: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
-      color: var(--color-text-faint);
-      font-size: var(--text-xs);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.8rem;
-    }
-
-    @media (min-width: 720px) {
-      .newsletter-form {
-        grid-template-columns: 1.2fr 0.9fr;
-      }
-      .newsletter-form .field:first-child { grid-column: 1 / 2; }
-      .newsletter-form .field:nth-child(2) { grid-column: 2 / 3; }
-      .newsletter-form .form-actions,
-      .newsletter-form .success-message { grid-column: 1 / -1; }
-      .story-grid,
-      .brand-grid,
-      .product-grid,
-      .revenue-grid,
-      .growth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .footer-top { grid-template-columns: 2fr 1fr; }
-    }
-
-    @media (min-width: 960px) {
-      .desktop-nav { display: flex; }
-      .menu-toggle { display: none; }
-      .hero-grid { grid-template-columns: 1.05fr 0.95fr; }
-      .category-bento { grid-template-columns: 1.2fr 0.8fr 0.8fr; }
-      .category-card.large { grid-row: span 2; }
-      .story-grid { grid-template-columns: 1.2fr 0.8fr 0.8fr; }
-      .story-card.featured { grid-row: span 2; }
-      .brand-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .editorial-split { grid-template-columns: 1.1fr 0.9fr; }
-      .newsletter-grid { grid-template-columns: 0.95fr 1.05fr; }
-      .revenue-grid,
-      .growth-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aevora — World of Great Brands</title>
+<meta name="description" content="Explore the world's 100 greatest brands on an interactive 3D globe."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><circle cx='24' cy='24' r='19' stroke='%230e676b' stroke-width='3' fill='none'/><path d='M15 27.5C18.2 20.8 23.1 17.5 32 16.8' stroke='%230e676b' stroke-width='2.5' stroke-linecap='round' fill='none'/><path d='M16.2 18.5L24.5 31.2L33.2 18.5' stroke='%230e676b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --font-body: 'Satoshi', Inter, sans-serif;
+  --color-bg-dark: #0d0d0f;
+  --color-surface-dark: #141416;
+  --color-border-dark: rgba(255,255,255,0.08);
+  --color-text-dark: #e8e6e0;
+  --color-muted-dark: #8a8880;
+  --color-primary: #2ec4b6;
+  --color-primary-glow: rgba(46,196,182,0.18);
+  --color-bg-light: #f5f4f0;
+  --color-surface-light: #ffffff;
+  --color-border-light: rgba(0,0,0,0.08);
+  --color-text-light: #1a1917;
+  --color-muted-light: #6b6966;
+  --radius-full: 9999px;
+  --radius-lg: 0.875rem;
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.3);
+  --transition: 180ms cubic-bezier(0.16,1,0.3,1);
+}
+[data-theme="dark"] {
+  --bg: var(--color-bg-dark);
+  --surface: var(--color-surface-dark);
+  --border: var(--color-border-dark);
+  --text: var(--color-text-dark);
+  --muted: var(--color-muted-dark);
+}
+[data-theme="light"] {
+  --bg: var(--color-bg-light);
+  --surface: var(--color-surface-light);
+  --border: var(--color-border-light);
+  --text: var(--color-text-light);
+  --muted: var(--color-muted-light);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:none;text-size-adjust:none;-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  min-height:100dvh;
+  overflow-x:hidden;
+  transition:background var(--transition),color var(--transition);
+}
+canvas{display:block}
+
+/* Header */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.5rem;height:4rem;
+  background:color-mix(in oklab,var(--bg) 80%,transparent);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.brand{display:flex;align-items:center;gap:0.6rem;text-decoration:none;color:var(--text)}
+.brand svg{color:var(--color-primary)}
+.brand-name{font-size:0.9rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+.header-right{display:flex;align-items:center;gap:0.5rem}
+.btn-icon{
+  width:2.75rem;height:2.75rem;border-radius:var(--radius-full);
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--text);cursor:pointer;
+  display:grid;place-items:center;
+  transition:background var(--transition),border-color var(--transition);
+}
+.btn-icon:hover{background:color-mix(in oklab,var(--surface) 85%,var(--text))}
+.btn-pill{
+  height:2.75rem;padding:0 1.1rem;border-radius:var(--radius-full);
+  background:var(--color-primary);color:#0d0d0f;
+  border:none;cursor:pointer;font-family:var(--font-body);
+  font-size:0.85rem;font-weight:700;letter-spacing:0.04em;
+  transition:opacity var(--transition),transform var(--transition);
+}
+.btn-pill:hover{opacity:0.88;transform:translateY(-1px)}
+
+/* Globe container */
+#globe-wrap{
+  position:fixed;inset:0;top:4rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+#canvas-globe{cursor:grab;touch-action:none}
+#canvas-globe:active{cursor:grabbing}
+
+/* Hero text */
+.hero-text{
+  position:absolute;top:1.5rem;left:50%;transform:translateX(-50%);
+  text-align:center;pointer-events:none;white-space:nowrap;
+}
+.hero-text h1{
+  font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;
+  letter-spacing:-0.03em;line-height:1.1;
+  background:linear-gradient(135deg,var(--text) 40%,var(--color-primary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-text p{
+  margin-top:0.35rem;font-size:clamp(0.8rem,1.5vw,0.95rem);
+  color:var(--muted);
+}
+
+/* Tooltip */
+#tooltip{
+  position:fixed;
+  pointer-events:none;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  gap:0.3rem;
+  z-index:200;
+  transform:translate(-50%,-120%);
+}
+#tooltip.show{display:flex}
+.tooltip-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:0.55rem 0.8rem;
+  box-shadow:var(--shadow-md);
+  display:flex;align-items:center;gap:0.55rem;
+  white-space:nowrap;
+}
+.tooltip-logo{width:22px;height:22px;object-fit:contain;flex-shrink:0}
+.tooltip-name{font-size:0.82rem;font-weight:600;color:var(--text)}
+.tooltip-cat{font-size:0.72rem;color:var(--muted)}
+.tooltip-arrow{
+  width:0;height:0;
+  border-left:6px solid transparent;border-right:6px solid transparent;
+  border-top:6px solid var(--surface);
+}
+
+/* Stats bar */
+.stats-bar{
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  display:flex;gap:1px;
+  background:var(--border);
+  border-radius:var(--radius-full);
+  overflow:hidden;
+  box-shadow:var(--shadow-md);
+  z-index:100;
+}
+.stat-pill{
+  padding:0.5rem 1.1rem;
+  background:var(--surface);
+  display:flex;align-items:center;gap:0.4rem;
+  font-size:0.8rem;color:var(--muted);
+}
+.stat-pill strong{color:var(--text);font-weight:700}
+
+/* Hint */
+.drag-hint{
+  position:fixed;bottom:4.5rem;left:50%;transform:translateX(-50%);
+  font-size:0.75rem;color:var(--muted);
+  display:flex;align-items:center;gap:0.4rem;
+  opacity:1;transition:opacity 1s ease;
+  pointer-events:none;
+}
+.drag-hint.fade{opacity:0}
+
+@media(prefers-reduced-motion:reduce){
+  #canvas-globe{animation:none!important}
+}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand-lockup" href="#top" aria-label="Aevora home">
-        <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="2"></circle>
-          <path d="M15 27.5C18.2 20.8 23.1 17.5 32 16.8" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"></path>
-          <path d="M16.2 18.5L24.5 31.2L33.2 18.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        <span class="brand-name">Aevora</span>
-      </a>
+<header class="header">
+  <a class="brand" href="#">
+    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" aria-label="Aevora logo">
+      <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="2"/>
+      <path d="M15 27.5C18.2 20.8 23.1 17.5 32 16.8" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+      <path d="M16.2 18.5L24.5 31.2L33.2 18.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="brand-name">Aevora</span>
+  </a>
+  <div class="header-right">
+    <button class="btn-icon" aria-label="Toggle theme" id="themeBtn">
+      <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <button class="btn-pill" onclick="document.getElementById('globe-wrap').scrollIntoView()">Explore Brands</button>
+  </div>
+</header>
 
-      <nav class="desktop-nav" aria-label="Primary">
-        <a href="#why">Why now</a>
-        <a href="#categories">Universes</a>
-        <a href="#brands">Brands</a>
-        <a href="#products">Products</a>
-        <a href="#revenue">Revenue</a>
-        <a href="#growth">Growth</a>
-      </nav>
+<div id="globe-wrap">
+  <div class="hero-text">
+    <h1>100 Greatest Brands on Earth</h1>
+    <p>Drag to spin · Hover to discover</p>
+  </div>
+  <canvas id="canvas-globe"></canvas>
+</div>
 
-      <div class="header-actions">
-        <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-        <a class="btn btn-primary" href="#newsletter">Join early access</a>
-        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel" data-menu-toggle>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M4 7H20M4 12H20M4 17H20"></path>
-          </svg>
-        </button>
-      </div>
+<div id="tooltip">
+  <div class="tooltip-card">
+    <img class="tooltip-logo" id="tt-logo" src="" alt="" width="22" height="22"/>
+    <div>
+      <div class="tooltip-name" id="tt-name"></div>
+      <div class="tooltip-cat" id="tt-cat"></div>
     </div>
+  </div>
+  <div class="tooltip-arrow"></div>
+</div>
 
-    <div class="mobile-panel" id="mobile-panel">
-      <nav class="mobile-nav" aria-label="Mobile">
-        <a href="#why">Why now</a>
-        <a href="#categories">Universes</a>
-        <a href="#brands">Brands</a>
-        <a href="#products">Products</a>
-        <a href="#revenue">Revenue</a>
-        <a href="#growth">Growth</a>
-        <a href="#newsletter">Newsletter</a>
-      </nav>
-    </div>
-  </header>
+<div class="stats-bar">
+  <div class="stat-pill"><strong>100</strong> brands</div>
+  <div class="stat-pill"><strong>12</strong> sectors</div>
+  <div class="stat-pill"><strong>∞</strong> discovery</div>
+</div>
 
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">A new category of product discovery</div>
-          <h1>Not a store. Not a blog. A universe of brands.</h1>
-          <p class="hero-copy">
-            Aevora is a cinematic, editorial destination that organizes the world’s greatest brands into immersive universes — where people discover exceptional products, trusted services, design stories, and what makes each company iconic.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#brands">Explore brand universes</a>
-            <a class="btn btn-secondary" href="#why">See the model</a>
-          </div>
-          <div class="hero-meta" aria-label="Site metrics preview">
-            <div class="metric">
-              <strong>100+</strong>
-              <span>Global brands</span>
-            </div>
-            <div class="metric">
-              <strong>12</strong>
-              <span>Curated sectors</span>
-            </div>
-            <div class="metric">
-              <strong>1</strong>
-              <span>Beautiful discovery layer</span>
-            </div>
-          </div>
-        </div>
+<div class="drag-hint" id="dragHint">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/>
+  </svg>
+  Drag to rotate the globe
+</div>
 
-        <div class="hero-stage" aria-hidden="true">
-          <div class="stage-grid"></div>
-          <div class="hero-ring"></div>
-          <div class="floating-pill pill-1">Tech</div>
-          <div class="floating-pill pill-2">Luxury</div>
-          <div class="floating-pill pill-3">Mobility</div>
-          <div class="floating-pill pill-4">Home</div>
+<script type="module">
+import * as THREE from 'https://esm.sh/three@0.163.0';
 
-          <div class="orbit-card a">
-            <h3>Brand universe</h3>
-            <p>Every brand gets a destination page — story, signature products, service ecosystem, design language, and best buys.</p>
-            <small>Editorial + commerce + trust</small>
-          </div>
+const BRANDS = [
+  {name:'Apple',slug:'apple',cat:'Technology',color:'#555'},
+  {name:'Google',slug:'google',cat:'Technology',color:'#4285F4'},
+  {name:'Microsoft',slug:'microsoft',cat:'Technology',color:'#00A4EF'},
+  {name:'Amazon',slug:'amazon',cat:'Technology',color:'#FF9900'},
+  {name:'Meta',slug:'meta',cat:'Social Media',color:'#0467DF'},
+  {name:'Samsung',slug:'samsung',cat:'Technology',color:'#1428A0'},
+  {name:'Sony',slug:'sony',cat:'Electronics',color:'#000'},
+  {name:'Intel',slug:'intel',cat:'Semiconductors',color:'#0071C5'},
+  {name:'IBM',slug:'ibm',cat:'Technology',color:'#054ADA'},
+  {name:'Oracle',slug:'oracle',cat:'Technology',color:'#F80000'},
+  {name:'Nvidia',slug:'nvidia',cat:'Semiconductors',color:'#76B900'},
+  {name:'Adobe',slug:'adobe',cat:'Software',color:'#FF0000'},
+  {name:'Netflix',slug:'netflix',cat:'Entertainment',color:'#E50914'},
+  {name:'Spotify',slug:'spotify',cat:'Music',color:'#1DB954'},
+  {name:'PayPal',slug:'paypal',cat:'Fintech',color:'#003087'},
+  {name:'Uber',slug:'uber',cat:'Mobility',color:'#000'},
+  {name:'Airbnb',slug:'airbnb',cat:'Travel',color:'#FF5A5F'},
+  {name:'X',slug:'x',cat:'Social Media',color:'#000'},
+  {name:'LinkedIn',slug:'linkedin',cat:'Social Media',color:'#0A66C2'},
+  {name:'YouTube',slug:'youtube',cat:'Media',color:'#FF0000'},
+  {name:'Instagram',slug:'instagram',cat:'Social Media',color:'#E1306C'},
+  {name:'WhatsApp',slug:'whatsapp',cat:'Messaging',color:'#25D366'},
+  {name:'Tesla',slug:'tesla',cat:'Mobility',color:'#CC0000'},
+  {name:'Salesforce',slug:'salesforce',cat:'Software',color:'#00A1E0'},
+  {name:'Zoom',slug:'zoom',cat:'Software',color:'#2D8CFF'},
+  {name:'Slack',slug:'slack',cat:'Software',color:'#4A154B'},
+  {name:'Shopify',slug:'shopify',cat:'E-commerce',color:'#96BF48'},
+  {name:'Dropbox',slug:'dropbox',cat:'Software',color:'#0061FF'},
+  {name:'Atlassian',slug:'atlassian',cat:'Software',color:'#0052CC'},
+  {name:'GitHub',slug:'github',cat:'Developer',color:'#181717'},
+  {name:'Toyota',slug:'toyota',cat:'Automotive',color:'#EB0A1E'},
+  {name:'BMW',slug:'bmw',cat:'Automotive',color:'#0066B1'},
+  {name:'Mercedes',slug:'mercedes',cat:'Automotive',color:'#333'},
+  {name:'Volkswagen',slug:'volkswagen',cat:'Automotive',color:'#151F6D'},
+  {name:'Honda',slug:'honda',cat:'Automotive',color:'#CC0000'},
+  {name:'Ford',slug:'ford',cat:'Automotive',color:'#003099'},
+  {name:'Audi',slug:'audi',cat:'Automotive',color:'#BB0A30'},
+  {name:'Ferrari',slug:'ferrari',cat:'Automotive',color:'#DA291C'},
+  {name:'Porsche',slug:'porsche',cat:'Automotive',color:'#000'},
+  {name:'Lamborghini',slug:'lamborghini',cat:'Automotive',color:'#D4AF37'},
+  {name:'Nike',slug:'nike',cat:'Sport',color:'#111'},
+  {name:'Adidas',slug:'adidas',cat:'Sport',color:'#000'},
+  {name:'LEGO',slug:'lego',cat:'Toys',color:'#E3000B'},
+  {name:'Coca-Cola',slug:'cocacola',cat:'Beverages',color:'#F40009'},
+  {name:'Pepsi',slug:'pepsi',cat:'Beverages',color:'#004B93'},
+  {name:"McDonald's",slug:'mcdonalds',cat:'Food',color:'#FFC72C'},
+  {name:'Starbucks',slug:'starbucks',cat:'Coffee',color:'#00704A'},
+  {name:'IKEA',slug:'ikea',cat:'Home',color:'#0058A3'},
+  {name:'Zara',slug:'zara',cat:'Fashion',color:'#000'},
+  {name:'H&M',slug:'hm',cat:'Fashion',color:'#E50010'},
+  {name:'Visa',slug:'visa',cat:'Finance',color:'#1A1F71'},
+  {name:'Mastercard',slug:'mastercard',cat:'Finance',color:'#EB001B'},
+  {name:'Amex',slug:'americanexpress',cat:'Finance',color:'#016FD0'},
+  {name:'Goldman',slug:'goldmansachs',cat:'Finance',color:'#7399C6'},
+  {name:'JPMorgan',slug:'jpmorgan',cat:'Finance',color:'#003E7E'},
+  {name:'Louis Vuitton',slug:'louisvuitton',cat:'Luxury',color:'#8B6C42'},
+  {name:'Gucci',slug:'gucci',cat:'Luxury',color:'#000'},
+  {name:'Chanel',slug:'chanel',cat:'Luxury',color:'#000'},
+  {name:'Rolex',slug:'rolex',cat:'Luxury',color:'#003F6E'},
+  {name:'Prada',slug:'prada',cat:'Luxury',color:'#000'},
+  {name:'Huawei',slug:'huawei',cat:'Technology',color:'#CF0A2C'},
+  {name:'Xiaomi',slug:'xiaomi',cat:'Technology',color:'#FF6900'},
+  {name:'LG',slug:'lg',cat:'Electronics',color:'#A50034'},
+  {name:'Panasonic',slug:'panasonic',cat:'Electronics',color:'#004B9B'},
+  {name:'Canon',slug:'canon',cat:'Imaging',color:'#CC0000'},
+  {name:'Nikon',slug:'nikon',cat:'Imaging',color:'#FFD700'},
+  {name:'Dell',slug:'dell',cat:'Technology',color:'#007DB8'},
+  {name:'HP',slug:'hp',cat:'Technology',color:'#0096D6'},
+  {name:'Lenovo',slug:'lenovo',cat:'Technology',color:'#E2231A'},
+  {name:'Asus',slug:'asus',cat:'Technology',color:'#00539B'},
+  {name:'Qualcomm',slug:'qualcomm',cat:'Semiconductors',color:'#3253DC'},
+  {name:'AMD',slug:'amd',cat:'Semiconductors',color:'#ED1C24'},
+  {name:'Cisco',slug:'cisco',cat:'Networking',color:'#049FD9'},
+  {name:'VMware',slug:'vmware',cat:'Software',color:'#607078'},
+  {name:'Siemens',slug:'siemens',cat:'Industrial',color:'#009999'},
+  {name:'Walmart',slug:'walmart',cat:'Retail',color:'#0071CE'},
+  {name:'Target',slug:'target',cat:'Retail',color:'#CC0000'},
+  {name:'eBay',slug:'ebay',cat:'E-commerce',color:'#E43137'},
+  {name:'Alibaba',slug:'alibaba',cat:'E-commerce',color:'#FF6A00'},
+  {name:'Tencent',slug:'tencent',cat:'Technology',color:'#12B7F5'},
+  {name:'Disney',slug:'disney',cat:'Entertainment',color:'#113CCF'},
+  {name:'Warner Bros',slug:'warnerbros',cat:'Entertainment',color:'#003087'},
+  {name:'EA',slug:'ea',cat:'Gaming',color:'#231F20'},
+  {name:'Nintendo',slug:'nintendo',cat:'Gaming',color:'#E60012'},
+  {name:'Shell',slug:'shell',cat:'Energy',color:'#DD1D21'},
+  {name:'BP',slug:'bp',cat:'Energy',color:'#009900'},
+  {name:'Pfizer',slug:'pfizer',cat:'Healthcare',color:'#0093D0'},
+  {name:'Nestlé',slug:'nestle',cat:'Food',color:'#009900'},
+  {name:'Unilever',slug:'unilever',cat:'FMCG',color:'#1F36C7'},
+  {name:'Emirates',slug:'emirates',cat:'Travel',color:'#D71921'},
+  {name:'Booking.com',slug:'bookingdotcom',cat:'Travel',color:'#003580'},
+  {name:'Expedia',slug:'expedia',cat:'Travel',color:'#FFC72C'},
+  {name:'Dyson',slug:'dyson',cat:'Home Tech',color:'#CC0066'},
+  {name:'Bose',slug:'bose',cat:'Audio',color:'#000'},
+  {name:'GE',slug:'ge',cat:'Industrial',color:'#3777BC'},
+  {name:'3M',slug:'3m',cat:'Industrial',color:'#FF0000'},
+];
 
-          <div class="orbit-card b">
-            <h3>Product intelligence</h3>
-            <p>Curated picks, scorecards, comparison layers, and outbound affiliate intent — without looking like a coupon site.</p>
-            <small>Monetize beautifully</small>
-          </div>
+const canvas = document.getElementById('canvas-globe');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
 
-          <div class="orbit-card c">
-            <h3>Visual discovery</h3>
-            <p>Users browse by category, aspiration, use case, lifestyle, price tier, and brand mythology.</p>
-            <small>Magnetic navigation</small>
-          </div>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45,1,0.1,1000);
+camera.position.z = 2.6;
 
-          <div class="orbit-card d">
-            <h3>Global taste</h3>
-            <p>From Apple to Rolex to Dyson to LEGO — one platform where iconic brands feel connected, not listed.</p>
-            <small>What nobody is doing well</small>
-          </div>
-        </div>
-      </div>
-    </section>
+function resize(){
+  const wrap = document.getElementById('globe-wrap');
+  const w = wrap.clientWidth;
+  const h = wrap.clientHeight;
+  renderer.setSize(w,h);
+  camera.aspect = w/h;
+  camera.updateProjectionMatrix();
+}
+resize();
+window.addEventListener('resize', resize);
 
-    <section id="why">
-      <div class="container editorial-split">
-        <div class="manifesto">
-          <h2>Discovery should feel like reading the future.</h2>
-          <p>
-            Most sites are either catalogs, affiliate blogs, or media publications. Aevora sits between them and turns brands into immersive editorial worlds that are discoverable, monetizable, and memorable.
-          </p>
-          <ul class="manifesto-list">
-            <li>Brand-first navigation instead of endless product pages.</li>
-            <li>Magazine-quality layouts instead of generic three-card grids.</li>
-            <li>Curated trust instead of algorithmic clutter.</li>
-            <li>Affiliate monetization hidden inside premium discovery.</li>
-          </ul>
-        </div>
+scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+const pointLight = new THREE.PointLight(0x2ec4b6, 1.2, 10);
+pointLight.position.set(3, 3, 3);
+scene.add(pointLight);
+const backLight = new THREE.PointLight(0xffffff, 0.4, 10);
+backLight.position.set(-3,-2,-3);
+scene.add(backLight);
 
-        <aside class="timeline-panel" aria-labelledby="build-path-title">
-          <h3 id="build-path-title">How this becomes a business</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <span>Stage 01</span>
-              <p>Launch with 20 iconic brands across tech, home, fashion, and mobility.</p>
-            </div>
-            <div class="timeline-item">
-              <span>Stage 02</span>
-              <p>Publish brand universe pages with affiliate-ready product curation and newsletter capture.</p>
-            </div>
-            <div class="timeline-item">
-              <span>Stage 03</span>
-              <p>Rank for high-intent discovery searches and distribute through short-form video and social content.</p>
-            </div>
-            <div class="timeline-item">
-              <span>Stage 04</span>
-              <p>Add sponsored placements, premium lists, and brand partnerships once traffic compounds.</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+const sphereGeo = new THREE.SphereGeometry(1, 64, 64);
+const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
 
-    <section id="categories">
-      <div class="container-wide">
-        <div class="section-head">
-          <div class="eyebrow">Brand universes</div>
-          <h2>Explore greatness by category, not by clutter.</h2>
-          <p>
-            Each universe is designed as an editorial world of its own — with visual mood, top brands, hero products, and intelligent pathways into comparison and purchase.
-          </p>
-        </div>
+function makeSphere(){
+  return new THREE.MeshPhongMaterial({
+    color: isDark() ? 0x0e1a2b : 0xdde8f2,
+    transparent:true,
+    opacity:0.82,
+    shininess:60,
+  });
+}
+const sphereMesh = new THREE.Mesh(sphereGeo, makeSphere());
+scene.add(sphereMesh);
 
-        <div class="category-bento">
-          <article class="category-card large">
-            <a href="#brands">
-              <span class="card-tag">Technology</span>
-              <h3>Devices, software, audio, gaming, and connected living</h3>
-              <p>
-                Explore the ecosystems of Apple, Samsung, Sony, Dyson, Bose, Microsoft, LEGO, and the brands shaping modern digital life.
-              </p>
-              <div class="category-visual" aria-hidden="true">
-                <div class="visual-lines"></div>
-                <div class="visual-dots"></div>
-                <div class="brand-marquee">
-                  <div class="brand-chip">Apple</div>
-                  <div class="brand-chip">Sony</div>
-                  <div class="brand-chip">Dyson</div>
-                  <div class="brand-chip">Samsung</div>
-                  <div class="brand-chip">LEGO</div>
-                  <div class="brand-chip">Bose</div>
-                </div>
-              </div>
-            </a>
-          </article>
+function makeGrid(){
+  const g = new THREE.Group();
+  const mat = new THREE.LineBasicMaterial({
+    color: isDark() ? 0x1a3050 : 0x9ab8d4,
+    transparent:true, opacity:0.35
+  });
+  for(let lat=-75; lat<=75; lat+=15){
+    const r = Math.cos(lat*Math.PI/180);
+    const y = Math.sin(lat*Math.PI/180);
+    const pts = [];
+    for(let i=0;i<=64;i++){
+      const a=i/64*Math.PI*2;
+      pts.push(new THREE.Vector3(r*Math.cos(a), y, r*Math.sin(a)));
+    }
+    g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), mat.clone()));
+  }
+  for(let lon=0;lon<180;lon+=15){
+    const pts=[];
+    for(let i=0;i<=64;i++){
+      const a=i/64*Math.PI*2;
+      const x=Math.cos(a)*Math.cos(lon*Math.PI/180);
+      const y=Math.sin(a);
+      const z=Math.cos(a)*Math.sin(lon*Math.PI/180);
+      pts.push(new THREE.Vector3(x,y,z));
+    }
+    g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), mat.clone()));
+  }
+  return g;
+}
+let gridGroup = makeGrid();
+scene.add(gridGroup);
 
-          <article class="category-card">
-            <a href="#brands">
-              <span class="card-tag">Luxury</span>
-              <h3>Craft, heritage, status, and timeless product design</h3>
-              <p>Watches, leather, hospitality, couture, and the companies that define aspiration.</p>
-              <div class="category-visual" aria-hidden="true">
-                <div class="visual-lines"></div>
-                <div class="visual-dots"></div>
-              </div>
-            </a>
-          </article>
+const glowGeo = new THREE.SphereGeometry(1.12, 32, 32);
+const glowMat = new THREE.MeshBasicMaterial({
+  color: 0x2ec4b6,
+  transparent:true,
+  opacity: isDark()?0.055:0.025,
+  side:THREE.BackSide
+});
+scene.add(new THREE.Mesh(glowGeo, glowMat));
 
-          <article class="category-card">
-            <a href="#brands">
-              <span class="card-tag">Mobility</span>
-              <h3>Cars, EVs, travel systems, and performance icons</h3>
-              <p>Where engineering, motion, design language, and prestige intersect.</p>
-              <div class="category-visual" aria-hidden="true">
-                <div class="visual-lines"></div>
-                <div class="visual-dots"></div>
-              </div>
-            </a>
-          </article>
+const textureLoader = new THREE.TextureLoader();
+const RADIUS = 1.04;
+const sprites = [];
+const spriteData = [];
 
-          <article class="category-card">
-            <a href="#brands">
-              <span class="card-tag">Home</span>
-              <h3>Kitchen, living, wellness, and beautifully built essentials</h3>
-              <p>From coffee machines to furniture systems and premium lifestyle tools.</p>
-              <div class="category-visual" aria-hidden="true">
-                <div class="visual-lines"></div>
-                <div class="visual-dots"></div>
-              </div>
-            </a>
-          </article>
+function fibonacciSphere(samples, i){
+  const phi = Math.acos(1 - 2*(i+0.5)/samples);
+  const theta = Math.PI*(1+Math.sqrt(5))*i;
+  return new THREE.Vector3(
+    Math.sin(phi)*Math.cos(theta),
+    Math.cos(phi),
+    Math.sin(phi)*Math.sin(theta)
+  ).multiplyScalar(RADIUS);
+}
 
-          <article class="category-card">
-            <a href="#brands">
-              <span class="card-tag">Fashion</span>
-              <h3>From athletic performance to design-led global labels</h3>
-              <p>Brands with identity, community, and a product story worth following.</p>
-              <div class="category-visual" aria-hidden="true">
-                <div class="visual-lines"></div>
-                <div class="visual-dots"></div>
-              </div>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
+BRANDS.forEach((brand, i)=>{
+  const pos = fibonacciSphere(BRANDS.length, i);
+  const tex = textureLoader.load(`https://cdn.simpleicons.org/${brand.slug}/ffffff`);
+  tex.colorSpace = THREE.SRGBColorSpace;
 
-    <section>
-      <div class="container-wide">
-        <div class="section-head">
-          <div class="eyebrow">Editorial format</div>
-          <h2>The site behaves like a modern magazine, not a product dump.</h2>
-          <p>
-            Content is structured into visual stories, featured drops, seasonal edits, and curated pathways that move users from inspiration to action.
-          </p>
-        </div>
+  const discGeo = new THREE.CircleGeometry(0.055, 32);
+  const discMat = new THREE.MeshBasicMaterial({
+    color: new THREE.Color(
+      brand.color === '#000' || brand.color === '#111' || brand.color === '#333'
+        ? (isDark() ? '#2a2a3a' : '#e0e0e8')
+        : brand.color
+    ),
+    transparent:true,
+    opacity:0.9,
+    side:THREE.DoubleSide,
+    depthWrite:false,
+  });
+  const disc = new THREE.Mesh(discGeo, discMat);
+  disc.position.copy(pos);
+  disc.lookAt(disc.position.clone().multiplyScalar(2));
+  scene.add(disc);
 
-        <div class="story-grid">
-          <article class="story-card featured">
-            <a href="#">
-              <span class="card-tag">Cover story</span>
-              <h3>Why Apple’s ecosystem still sets the standard for product gravity</h3>
-              <p>
-                A flagship long-form page that mixes ecosystem storytelling, top picks, service layers, pricing ladders, and where each product fits in a user’s life.
-              </p>
-              <div class="meta-row">
-                <span>Universe page</span>
-                <span>8 min read</span>
-                <span>Shop layer ready</span>
-              </div>
-            </a>
-          </article>
+  const spriteMat = new THREE.SpriteMaterial({
+    map:tex,
+    transparent:true,
+    alphaTest:0.01,
+    depthWrite:false,
+  });
+  const sprite = new THREE.Sprite(spriteMat);
+  sprite.scale.set(0.07, 0.07, 1);
+  sprite.position.copy(pos.clone().multiplyScalar(1.001));
+  scene.add(sprite);
 
-          <article class="story-card">
-            <a href="#">
-              <span class="card-tag">Seasonal edit</span>
-              <h3>12 brands redefining the premium workspace</h3>
-              <p>Chairs, lamps, monitors, notebooks, coffee systems, and focus-first tools.</p>
-              <div class="meta-row">
-                <span>Curated list</span>
-                <span>High intent</span>
-              </div>
-            </a>
-          </article>
+  sprites.push(sprite);
+  spriteData.push({brand, pos: pos.clone(), disc});
+});
 
-          <article class="story-card">
-            <a href="#">
-              <span class="card-tag">Comparison</span>
-              <h3>Dyson vs. Shark vs. Miele — the premium cleaning map</h3>
-              <p>Use cases, durability, service, price bands, and the right buyer match.</p>
-              <div class="meta-row">
-                <span>Affiliate ready</span>
-                <span>Conversion page</span>
-              </div>
-            </a>
-          </article>
+const globeGroup = new THREE.Group();
+scene.remove(sphereMesh);
+scene.remove(gridGroup);
+globeGroup.add(sphereMesh);
+globeGroup.add(gridGroup);
+sprites.forEach(s=>{ scene.remove(s); globeGroup.add(s); });
+spriteData.forEach(d=>{ scene.remove(d.disc); globeGroup.add(d.disc); });
+scene.add(globeGroup);
 
-          <article class="story-card">
-            <a href="#">
-              <span class="card-tag">Service layer</span>
-              <h3>The best global hotel brands for design-conscious travelers</h3>
-              <p>Brand storytelling does not need to stop at physical products.</p>
-              <div class="meta-row">
-                <span>Hotels</span>
-                <span>Partnership-ready</span>
-              </div>
-            </a>
-          </article>
+let isDragging = false;
+let prevMouse = {x:0,y:0};
+let velocity = {x:0,y:0};
+let autoSpin = true;
+let hintFaded = false;
 
-          <article class="story-card">
-            <a href="#">
-              <span class="card-tag">Gift edit</span>
-              <h3>The objects that make a house feel intentionally designed</h3>
-              <p>Small luxury, high-conversion baskets, and easy newsletter-driven commerce.</p>
-              <div class="meta-row">
-                <span>Holiday angle</span>
-                <span>Social friendly</span>
-              </div>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
+const tooltip = document.getElementById('tooltip');
+const ttLogo  = document.getElementById('tt-logo');
+const ttName  = document.getElementById('tt-name');
+const ttCat   = document.getElementById('tt-cat');
+const raycaster = new THREE.Raycaster();
+raycaster.params.Sprite = {threshold:0.03};
+const mouse2D = new THREE.Vector2();
+let hoveredIdx = -1;
 
-    <section class="brand-index" id="brands">
-      <div class="container-wide">
-        <div class="section-head">
-          <div class="eyebrow">Brand index</div>
-          <h2>Every brand gets a scorecard, a story, and a reason to exist here.</h2>
-          <p>
-            The point is not to list brands. The point is to explain why each brand matters, what it is best at, and which products deserve attention first.
-          </p>
-        </div>
+function onPointerDown(e){
+  isDragging = true;
+  autoSpin = false;
+  const pt = e.touches ? e.touches[0] : e;
+  prevMouse = {x:pt.clientX, y:pt.clientY};
+  velocity = {x:0,y:0};
+  if(!hintFaded){
+    document.getElementById('dragHint').classList.add('fade');
+    hintFaded = true;
+  }
+}
 
-        <div class="brand-grid">
-          <article class="brand-card">
-            <a href="#">
-              <div class="brand-top">
-                <div>
-                  <span class="card-tag">Technology</span>
-                  <h3>Apple</h3>
-                </div>
-                <div class="brand-badge">A</div>
-              </div>
-              <p>Ecosystem strength, industrial design, retail trust, and premium customer lock-in.</p>
-              <div class="score">
-                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:96%"></span></div><strong>96</strong></div>
-                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:94%"></span></div><strong>94</strong></div>
-                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:98%"></span></div><strong>98</strong></div>
-              </div>
-            </a>
-          </article>
+function onPointerMove(e){
+  const pt = e.touches ? e.touches[0] : e;
+  const rect = canvas.getBoundingClientRect();
+  mouse2D.x = ((pt.clientX-rect.left)/rect.width)*2-1;
+  mouse2D.y = -((pt.clientY-rect.top)/rect.height)*2+1;
 
-          <article class="brand-card">
-            <a href="#">
-              <div class="brand-top">
-                <div>
-                  <span class="card-tag">Home technology</span>
-                  <h3>Dyson</h3>
-                </div>
-                <div class="brand-badge">D</div>
-              </div>
-              <p>Engineering theater, premium household performance, and a strong visual product identity.</p>
-              <div class="score">
-                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:92%"></span></div><strong>92</strong></div>
-                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:90%"></span></div><strong>90</strong></div>
-                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:89%"></span></div><strong>89</strong></div>
-              </div>
-            </a>
-          </article>
+  if(isDragging){
+    const dx = pt.clientX - prevMouse.x;
+    const dy = pt.clientY - prevMouse.y;
+    velocity.x = dy * 0.005;
+    velocity.y = dx * 0.005;
+    globeGroup.rotation.x += velocity.x;
+    globeGroup.rotation.y += velocity.y;
+    prevMouse = {x:pt.clientX, y:pt.clientY};
+  }
+}
 
-          <article class="brand-card">
-            <a href="#">
-              <div class="brand-top">
-                <div>
-                  <span class="card-tag">Audio</span>
-                  <h3>Sony</h3>
-                </div>
-                <div class="brand-badge">S</div>
-              </div>
-              <p>Deep category breadth across entertainment, sound, imaging, and everyday premium electronics.</p>
-              <div class="score">
-                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:88%"></span></div><strong>88</strong></div>
-                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:93%"></span></div><strong>93</strong></div>
-                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:86%"></span></div><strong>86</strong></div>
-              </div>
-            </a>
-          </article>
+function onPointerUp(){ isDragging = false; }
 
-          <article class="brand-card">
-            <a href="#">
-              <div class="brand-top">
-                <div>
-                  <span class="card-tag">Mobility</span>
-                  <h3>Tesla</h3>
-                </div>
-                <div class="brand-badge">T</div>
-              </div>
-              <p>Software-led car ownership, bold industrial minimalism, and a polarizing but powerful brand story.</p>
-              <div class="score">
-                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:89%"></span></div><strong>89</strong></div>
-                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:84%"></span></div><strong>84</strong></div>
-                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:93%"></span></div><strong>93</strong></div>
-              </div>
-            </a>
-          </article>
+canvas.addEventListener('mousedown', onPointerDown);
+window.addEventListener('mousemove', onPointerMove);
+window.addEventListener('mouseup', onPointerUp);
+canvas.addEventListener('touchstart', onPointerDown, {passive:true});
+window.addEventListener('touchmove', onPointerMove, {passive:true});
+window.addEventListener('touchend', onPointerUp);
 
-          <article class="brand-card">
-            <a href="#">
-              <div class="brand-top">
-                <div>
-                  <span class="card-tag">Sport</span>
-                  <h3>Nike</h3>
-                </div>
-                <div class="brand-badge">N</div>
-              </div>
-              <p>Product innovation married to culture, storytelling, community, and global symbolic power.</p>
-              <div class="score">
-                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:90%"></span></div><strong>90</strong></div>
-                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:87%"></span></div><strong>87</strong></div>
-                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:95%"></span></div><strong>95</strong></div>
-              </div>
-            </a>
-          </article>
+canvas.addEventListener('wheel', (e)=>{
+  camera.position.z = Math.max(1.8, Math.min(5, camera.position.z + e.deltaY * 0.003));
+}, {passive:true});
 
-          <article class="brand-card">
-            <a href="#">
-              <div class="brand-top">
-                <div>
-                  <span class="card-tag">Luxury</span>
-                  <h3>Rolex</h3>
-                </div>
-                <div class="brand-badge">R</div>
-              </div>
-              <p>Precision, symbolism, resale mythology, and unmatched brand recognizability in watches.</p>
-              <div class="score">
-                <div class="score-row"><span>Design</span><div class="score-bar"><span style="width:94%"></span></div><strong>94</strong></div>
-                <div class="score-row"><span>Utility</span><div class="score-bar"><span style="width:79%"></span></div><strong>79</strong></div>
-                <div class="score-row"><span>Aspiration</span><div class="score-bar"><span style="width:99%"></span></div><strong>99</strong></div>
-              </div>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
+const clock = new THREE.Clock();
+function animate(){
+  requestAnimationFrame(animate);
+  clock.getDelta();
 
-    <section id="products">
-      <div class="container-wide">
-        <div class="section-head">
-          <div class="eyebrow">Shoppable layer</div>
-          <h2>Product cards are curated recommendations, not commodity listings.</h2>
-          <p>
-            Each card can point to your affiliate partner, brand store, or marketplace listing. The visual system keeps commerce elegant instead of noisy.
-          </p>
-        </div>
+  if(!isDragging){
+    if(autoSpin){
+      globeGroup.rotation.y += 0.0015;
+    } else {
+      velocity.x *= 0.95;
+      velocity.y *= 0.95;
+      globeGroup.rotation.x += velocity.x;
+      globeGroup.rotation.y += velocity.y;
+      if(Math.abs(velocity.x)<0.0001 && Math.abs(velocity.y)<0.0001) autoSpin = true;
+    }
+  }
 
-        <div class="product-grid">
-          <article class="product-card">
-            <div class="product-media" aria-hidden="true">
-              <div class="media-object"></div>
-            </div>
-            <div style="padding:1.15rem">
-              <span class="card-tag">Apple universe</span>
-              <h3>MacBook Air</h3>
-              <p>The gateway device for modern knowledge work, portability, and premium everyday computing.</p>
-              <div class="price-row">
-                <span class="price">From premium tier</span>
-                <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">View product</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media" aria-hidden="true">
-              <div class="media-object"></div>
-            </div>
-            <div style="padding:1.15rem">
-              <span class="card-tag">Dyson universe</span>
-              <h3>Airwrap</h3>
-              <p>A classic example of engineering spectacle turned into social-proof-driven beauty commerce.</p>
-              <div class="price-row">
-                <span class="price">High aspiration</span>
-                <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">View product</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media" aria-hidden="true">
-              <div class="media-object"></div>
-            </div>
-            <div style="padding:1.15rem">
-              <span class="card-tag">Sony universe</span>
-              <h3>WH-1000XM series</h3>
-              <p>One of the easiest high-intent audio recommendation pages you can build for conversion.</p>
-              <div class="price-row">
-                <span class="price">Best seller zone</span>
-                <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">View product</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="revenue">
-      <div class="container-wide">
-        <div class="section-head">
-          <div class="eyebrow">Revenue design</div>
-          <h2>Monetization is built into the experience from day one.</h2>
-          <p>
-            You do not need to wait for massive scale. The site can earn through layered monetization even with focused niche traffic.
-          </p>
-        </div>
-
-        <div class="revenue-grid">
-          <article class="monetization-card">
-            <span class="card-tag">01 · Affiliate</span>
-            <h3>Product and marketplace commissions</h3>
-            <p>Link curated items to Amazon, brand programs, CJ, ShareASale, Rakuten, or direct merchant landing pages.</p>
-            <ul>
-              <li>Best for product roundups and brand universe pages.</li>
-              <li>Works especially well for tech, home, beauty, and lifestyle.</li>
-              <li>High-intent pages can monetize with relatively low traffic.</li>
-            </ul>
-          </article>
-
-          <article class="monetization-card">
-            <span class="card-tag">02 · Sponsorship</span>
-            <h3>Featured brand edits and paid placement</h3>
-            <p>Once the visual quality and audience trust are established, brands can pay to appear in themed edits.</p>
-            <ul>
-              <li>“Brand of the month” homepage slot.</li>
-              <li>Seasonal campaigns and launch showcases.</li>
-              <li>Newsletter sponsorship inventory.</li>
-            </ul>
-          </article>
-
-          <article class="monetization-card">
-            <span class="card-tag">03 · Premium</span>
-            <h3>Members-only lists and private curation</h3>
-            <p>Charge for access to premium buying guides, founder picks, investment-style brand reports, or concierge recommendations.</p>
-            <ul>
-              <li>Collectors’ edits, luxury watch lists, workspace kits.</li>
-              <li>Private community or email membership layer.</li>
-              <li>Strong fit for design-conscious audiences.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="growth">
-      <div class="container-wide">
-        <div class="section-head">
-          <div class="eyebrow">Traffic system</div>
-          <h2>Growth comes from search, social, and repeatable visual content.</h2>
-          <p>
-            Your advantage is that this idea is naturally content-native. One universe page can become articles, reels, carousels, email, and comparison pages.
-          </p>
-        </div>
-
-        <div class="growth-grid">
-          <article class="growth-card">
-            <span class="card-tag">SEO engine</span>
-            <h3>Build search intent into every universe page</h3>
-            <ul>
-              <li>Best Apple products for work, travel, creators, gifting.</li>
-              <li>Nike vs. Adidas brand ecosystems.</li>
-              <li>Luxury hotel brands ranked by design and service.</li>
-            </ul>
-          </article>
-
-          <article class="growth-card">
-            <span class="card-tag">Social system</span>
-            <h3>Turn each page into short-form content</h3>
-            <ul>
-              <li>Top 5 brands in premium audio.</li>
-              <li>Why Dyson sells aspiration, not just appliances.</li>
-              <li>The best objects money can buy for your desk.</li>
-            </ul>
-          </article>
-
-          <article class="growth-card">
-            <span class="card-tag">Retention loop</span>
-            <h3>Newsletter converts casual discovery into repeat traffic</h3>
-            <ul>
-              <li>Weekly new brand universes.</li>
-              <li>Monthly best-in-category edits.</li>
-              <li>Limited-run themed curation drops.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="newsletter">
-      <div class="container">
-        <div class="newsletter">
-          <div class="newsletter-grid">
-            <div>
-              <div class="eyebrow">Early audience capture</div>
-              <h2>Join the first readers of Aevora.</h2>
-              <p>
-                Collect subscribers before the full library is live. Offer a weekly curation email with exceptional brands, products, and the stories behind them.
-              </p>
-            </div>
-
-            <div>
-              <form class="newsletter-form" id="newsletter-form">
-                <div class="field">
-                  <label for="email">Email address</label>
-                  <input id="email" name="email" type="email" placeholder="you@example.com" required />
-                </div>
-
-                <div class="field">
-                  <label for="interest">Primary interest</label>
-                  <select id="interest" name="interest">
-                    <option value="technology">Technology</option>
-                    <option value="luxury">Luxury</option>
-                    <option value="home">Home</option>
-                    <option value="mobility">Mobility</option>
-                    <option value="fashion">Fashion</option>
-                  </select>
-                </div>
-
-                <div class="form-actions">
-                  <button class="btn btn-primary" type="submit">Join the newsletter</button>
-                </div>
-
-                <div class="success-message" id="success-message" role="status" aria-live="polite">
-                  You’re on the list. In production, connect this form to Formspree, Beehiiv, ConvertKit, or Mailchimp.
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-grid">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a class="brand-lockup" href="#top" aria-label="Aevora home">
-            <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-              <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-width="2"></circle>
-              <path d="M15 27.5C18.2 20.8 23.1 17.5 32 16.8" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"></path>
-              <path d="M16.2 18.5L24.5 31.2L33.2 18.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <span class="brand-name">Aevora</span>
-          </a>
-          <p>
-            A visual discovery platform for the world’s greatest brands, products, and services — designed to turn taste into trust, and trust into revenue.
-          </p>
-        </div>
-
-        <nav class="footer-links" aria-label="Footer">
-          <a href="#why">Why now</a>
-          <a href="#categories">Universes</a>
-          <a href="#brands">Brands</a>
-          <a href="#products">Products</a>
-          <a href="#newsletter">Newsletter</a>
-        </nav>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 Aevora</span>
-        <span>Static launch concept · deploy free on Netlify, Vercel, or Cloudflare Pages</span>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      const root = document.documentElement;
-      const themeToggle = document.querySelector('[data-theme-toggle]');
-      const menuToggle = document.querySelector('[data-menu-toggle]');
-      const mobilePanel = document.getElementById('mobile-panel');
-      const form = document.getElementById('newsletter-form');
-      const success = document.getElementById('success-message');
-
-      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.setAttribute('data-theme', theme);
-
-      function renderThemeIcon(currentTheme) {
-        if (!themeToggle) return;
-        themeToggle.setAttribute(
-          'aria-label',
-          currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-        );
-        themeToggle.innerHTML = currentTheme === 'dark'
-          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"></path></svg>'
-          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"></path></svg>';
+  raycaster.setFromCamera(mouse2D, camera);
+  let found = -1;
+  for(let i=0;i<sprites.length;i++){
+    const worldPos = sprites[i].getWorldPosition(new THREE.Vector3());
+    const dist = raycaster.ray.distanceToPoint(worldPos);
+    if(dist < 0.055){
+      const toCamera = camera.position.clone().sub(worldPos);
+      const normal = worldPos.clone().normalize();
+      if(toCamera.dot(normal) > 0){
+        found = i;
+        break;
       }
+    }
+  }
 
-      renderThemeIcon(theme);
+  if(found !== hoveredIdx){
+    hoveredIdx = found;
+    if(found >= 0){
+      const bd = spriteData[found];
+      const worldPos = sprites[found].getWorldPosition(new THREE.Vector3());
+      const projected = worldPos.clone().project(camera);
+      const rect = canvas.getBoundingClientRect();
+      const sx = (projected.x*0.5+0.5)*rect.width + rect.left;
+      const sy = (-projected.y*0.5+0.5)*rect.height + rect.top;
+      tooltip.style.left = sx+'px';
+      tooltip.style.top  = sy+'px';
+      ttLogo.src = `https://cdn.simpleicons.org/${bd.brand.slug}/555555`;
+      ttLogo.alt = bd.brand.name;
+      ttName.textContent = bd.brand.name;
+      ttCat.textContent  = bd.brand.cat;
+      tooltip.classList.add('show');
+    } else {
+      tooltip.classList.remove('show');
+    }
+  } else if(found >= 0){
+    const worldPos = sprites[found].getWorldPosition(new THREE.Vector3());
+    const projected = worldPos.clone().project(camera);
+    const rect = canvas.getBoundingClientRect();
+    const sx = (projected.x*0.5+0.5)*rect.width + rect.left;
+    const sy = (-projected.y*0.5+0.5)*rect.height + rect.top;
+    tooltip.style.left = sx+'px';
+    tooltip.style.top  = sy+'px';
+  }
 
-      if (themeToggle) {
-        themeToggle.addEventListener('click', function () {
-          theme = theme === 'dark' ? 'light' : 'dark';
-          root.setAttribute('data-theme', theme);
-          renderThemeIcon(theme);
-        });
-      }
+  renderer.render(scene, camera);
+}
+animate();
 
-      if (menuToggle && mobilePanel) {
-        menuToggle.addEventListener('click', function () {
-          const isOpen = mobilePanel.classList.toggle('open');
-          menuToggle.setAttribute('aria-expanded', String(isOpen));
-        });
+const themeBtn = document.getElementById('themeBtn');
+const themeIcon = document.getElementById('themeIcon');
 
-        mobilePanel.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', function () {
-            mobilePanel.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  sphereMesh.material.color.set(theme==='dark' ? 0x0e1a2b : 0xdde8f2);
+  glowMat.opacity = theme==='dark' ? 0.055 : 0.025;
+  gridGroup.children.forEach(line=>{
+    line.material.color.set(theme==='dark' ? 0x1a3050 : 0x9ab8d4);
+  });
+  themeIcon.innerHTML = theme==='dark'
+    ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'
+    : '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+}
 
-      if (form && success) {
-        form.addEventListener('submit', function (event) {
-          event.preventDefault();
-          success.classList.add('show');
-          form.reset();
-        });
-      }
-    })();
-  </script>
+let currentTheme = 'dark';
+applyTheme(currentTheme);
+
+themeBtn.addEventListener('click', ()=>{
+  currentTheme = currentTheme==='dark' ? 'light' : 'dark';
+  applyTheme(currentTheme);
+});
+</script>
 </body>
 </html>
